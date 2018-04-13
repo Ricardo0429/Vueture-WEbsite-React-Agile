@@ -27,6 +27,13 @@
   to { transform: rotate(360deg); }
 }
 
-/* .landing-page-markers {
-  width: 50%;
-} */
+.landing-page-markers, .landing-page-markers-heading, .landing-page-markers-text {
+  background-color: orange;
+  border-radius: 5px;
+}
+
+.you-are-here {
+  font-size: 32px;
+  margin: 30px 30px;
+  padding: 30px 30px;
+}

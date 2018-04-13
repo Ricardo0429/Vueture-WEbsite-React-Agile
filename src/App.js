@@ -19,9 +19,10 @@ class App extends Component {
 
         <ListGroup>
           <div class="section-well col-sm-offset-1 col-sm-4">
-          <ListGroupItem header="You are here" href="#" bsClass="list-group-item landing-page-markers">
+          <p class='landing-page-markers you-are-here'>You are here!</p>
+          {/* <ListGroupItem header="You are here" href="#" bsClass="list-group-item landing-page-markers">
               Tired of toy projects, tutorials, and online courses?
-          </ListGroupItem>
+          </ListGroupItem> */}
           </div>
           <div class="section-well col-sm-offset-7 col-sm-4">
           <ListGroupItem header="Standups" href="#" bsClass="list-group-item landing-page-markers">
