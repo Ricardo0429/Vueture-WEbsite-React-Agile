@@ -17,52 +17,33 @@ class App extends Component {
  
         <AVNavbar/>
 
-        <ListGroup>
+        <Grid>
           <Row>
-            <Col xsOffset={1} sm={4} class="section-well">
-            
+            <Col xsOffset={1} sm={5} class="section-well">
               <p class='landing-page-markers you-are-here'>You are here!</p>
-              {/* <ListGroupItem header="You are here" href="#" bsClass="list-group-item landing-page-markers">
-                  Tired of toy projects, tutorials, and online courses?
-              </ListGroupItem> */}
             </Col>
           </Row>
           <Row>
-            <Col xsOffset={7} sm={4} class="section-well">
-              <ListGroupItem header="Standups" href="#" bsClass="list-group-item landing-page-markers">
-                Sitting down at home, or not, meet other people in our online hangouts.
-              </ListGroupItem>
+            <Col xsOffset={6} sm={5} class="section-well">
+              <p class='landing-page-markers you-are-here'>Standups: Sitting down at home, or not, meet other people in our online hangouts.</p>
             </Col>
           </Row>
           <Row>
-            <Col xsOffset={1} sm={4} class="section-well">
-              <ListGroupItem header="Real Projects" href="#" bsClass="list-group-item landing-page-markers">
-                Satisfy real charity customers with open source code for great causes around the world.
-              </ListGroupItem>
+            <Col xsOffset={1} sm={5} class="section-well">
+              <p class='landing-page-markers you-are-here'>Real Projects: Satisfy real charity customers with open source code for great causes around the world.</p>
             </Col>
           </Row>  
           <Row>
-            <Col xsOffset={7} sm={4} class="section-well">
-              <ListGroupItem header="Sprints" href="#" bsClass="list-group-item landing-page-markers">
-                Now you've got yourself introduced and interested in a project, why not commit to a sprint or two?
-              </ListGroupItem>
+            <Col xsOffset={6} sm={5} class="section-well">
+              <p class='landing-page-markers you-are-here'>Sprints: Now you've got yourself introduced and interested in a project, why not commit to a sprint or two?</p>
             </Col>
           </Row>
           <Row>
-            <Col xsOffset={1} sm={4} class="section-well">
-              <ListGroupItem header="Jobs" href="#" bsClass="list-group-item landing-page-markers">
-                Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.
-              </ListGroupItem>  
+            <Col xsOffset={1} sm={5} class="section-well">
+              <p class='landing-page-markers you-are-here'>Jobs: Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.</p>
             </Col>
-          </Row>   
-          <Row>
-            <Col xsOffset={1} sm={4} class="section-well">
-              <ListGroupItem header="Jobs" href="#" bsClass="list-group-item landing-page-markers">
-                Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.
-              </ListGroupItem>
-            </Col>
-          </Row>    
-        </ListGroup>
+          </Row>     
+        </Grid>
       </div>
     );
   }
