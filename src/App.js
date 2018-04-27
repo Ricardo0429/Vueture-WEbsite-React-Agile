@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Col, Row, ListGroup, ListGroupItem } from 'react-bootstrap';
+import 'animate.css/animate.min.css';
+import ScrollAnimation from 'react-animate-on-scroll';
+
 
 import logo from './logo.png';
 import AVNavbar from './AVNavbar';
@@ -14,8 +17,12 @@ class App extends Component {
           <h1 className="App-title">AgileVentures</h1>
           <h2>Boost your team coding skills!</h2>
         </header>
- 
+
         <AVNavbar/>
+
+        <ScrollAnimation animateIn="fadeIn" offset={10}>
+          <h1>Some Text</h1>
+        </ScrollAnimation>
 
         <Grid>
           <Row>
@@ -32,7 +39,7 @@ class App extends Component {
             <Col xsOffset={1} sm={5} class="section-well">
               <p class='landing-page-markers you-are-here'>Real Projects: Satisfy real charity customers with open source code for great causes around the world.</p>
             </Col>
-          </Row>  
+          </Row>
           <Row>
             <Col xsOffset={6} sm={5} class="section-well">
               <p class='landing-page-markers you-are-here'>Sprints: Now you've got yourself introduced and interested in a project, why not commit to a sprint or two?</p>
@@ -42,8 +49,11 @@ class App extends Component {
             <Col xsOffset={1} sm={5} class="section-well">
               <p class='landing-page-markers you-are-here'>Jobs: Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.</p>
             </Col>
-          </Row>     
+          </Row>
         </Grid>
+
+
+
       </div>
     );
   }
