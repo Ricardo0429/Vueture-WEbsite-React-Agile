@@ -21,36 +21,35 @@ class App extends Component {
         <AVNavbar/>
 
         <Grid>
-          <ScrollAnimation animateIn="fadeIn" offset={10} animateOnce={true}>
+          <ScrollAnimation animateIn="tada" offset={10} delay={500} animateOnce={true}>
           <Row>
-            {/* <div class="col-sm-5 col-xs-offset-1"> */}
             <Col xsOffset={1} sm={5} class="section-well">
               <p class='landing-page-markers you-are-here'>You are here!</p>
             </Col>
           </Row>
           </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeIn" offset={10} animateOnce={true}>
+          <ScrollAnimation animateIn="tada" offset={10} delay={600} animateOnce={true}>
           <Row>
             <Col xsOffset={6} sm={5} class="section-well">
               <p class='landing-page-markers you-are-here'>Standups: Sitting down at home, or not, meet other people in our online hangouts.</p>
             </Col>
           </Row>
           </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeIn" offset={10} animateOnce={true}>
+          <ScrollAnimation animateIn="tada" offset={10} delay={700} animateOnce={true}>
           <Row>
             <Col xsOffset={1} sm={5} class="section-well">
               <p class='landing-page-markers you-are-here'>Real Projects: Satisfy real charity customers with open source code for great causes around the world.</p>
             </Col>
           </Row>
           </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeIn" offset={10} animateOnce={true}>
+          <ScrollAnimation animateIn="tada" offset={10} delay={800} animateOnce={true}>
           <Row>
             <Col xsOffset={6} sm={5} class="section-well">
               <p class='landing-page-markers you-are-here'>Sprints: Now you've got yourself introduced and interested in a project, why not commit to a sprint or two?</p>
             </Col>
           </Row>
           </ScrollAnimation>
-          <ScrollAnimation animateIn="fadeIn" offset={10} animateOnce={true}>
+          <ScrollAnimation animateIn="tada" offset={10} animateOnce={true}>
           <Row>
             <Col xsOffset={1} sm={5} class="section-well">
               <p class='landing-page-markers you-are-here'>Jobs: Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.</p>
