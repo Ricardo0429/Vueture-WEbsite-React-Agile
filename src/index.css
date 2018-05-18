@@ -4,6 +4,6 @@ body {
   font-family: sans-serif;
   background-image: url("road.jpg");
   background-repeat: space;
-  background-attachment: fixed;
+  background-size: cover;
   background-position: center;
 }
