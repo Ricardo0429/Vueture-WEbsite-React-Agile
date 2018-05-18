@@ -4,5 +4,5 @@ body {
   font-family: sans-serif;
   background-image: url("road.jpg");
   background-repeat: no-repeat;
-  /* background-attachment: fixed; */
+  background-attachment: fixed;
 }
