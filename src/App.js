@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import { Grid, Col, Row, ListGroup, ListGroupItem, Button } from 'react-bootstrap';
 import 'animate.css/animate.min.css';
 import ScrollAnimation from 'react-animate-on-scroll';
-import { ReactHover, optionsCursorTrueWithMargin } from 'react-hover';
+import ReactHover from 'react-hover';
 
 
 import logo from './logo.png';
 import AVNavbar from './AVNavbar';
 import './App.css';
 
+const optionsCursorTrueWithMargin = {
+  followCursor: true,
+  shiftX: 20,
+  shiftY: 0
+}
 class App extends Component {
   render() {
     return (
@@ -36,8 +41,7 @@ class App extends Component {
           <ScrollAnimation animateIn="tada" offset={10} delay={3000} animateOnce={true}>
           <Row>
             <Col xsOffset={0} mdPull={1} sm={5} class="section-well">
-              <ReactHover
-                options={optionsCursorTrueWithMargin}>
+              <ReactHover options={optionsCursorTrueWithMargin}>
                 <ReactHover.Trigger type='trigger'>
                   <h1 style={{background: '#abbcf1', width: '200px'}}> Hover on me </h1>
                 </ReactHover.Trigger>
