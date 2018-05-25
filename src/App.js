@@ -11,9 +11,10 @@ import './App.css';
 
 const optionsCursorTrueWithMargin = {
   followCursor: true,
-  shiftX: 20,
-  shiftY: 0
+  shiftX: -50,
+  shiftY: -320
 }
+
 class App extends Component {
   render() {
     return (
@@ -29,9 +30,9 @@ class App extends Component {
         <Grid>
           <ScrollAnimation animateIn="tada" offset={10} delay={1000} animateOnce={true}>
           <Row>
-            <Col xsOffset={1} sm={5} class="section-well">
+            <Col xsOffset={1} sm={5} className="section-well">
               <Button bsStyle="primary" bsSize="large">
-                <p class=''>You are here!
+                <p>You are here!
                     <img src={logo} className="App-logo" alt="logo" />
                 </p>
             </Button>
@@ -40,24 +41,24 @@ class App extends Component {
           </ScrollAnimation>
           <ScrollAnimation animateIn="tada" offset={10} delay={3000} animateOnce={true}>
           <Row>
-            <Col xsOffset={0} mdPull={1} sm={5} class="section-well">
-              <ReactHover options={optionsCursorTrueWithMargin}>
-                <ReactHover.Trigger type='trigger'>
-                  <h1 style={{background: '#abbcf1', width: '200px'}}> Hover on me </h1>
-                </ReactHover.Trigger>
-                <ReactHover.Hover type='hover'>
-                  <p class='landing-page-markers you-are-here'>Standups{/*Sitting down at home, or not, meet other people in our online hangouts.*/}
-                    <img src={logo} className="App-logo" alt="logo" />
-                  </p>
-                </ReactHover.Hover>
-            </ReactHover>
+            <Col xsOffset={0} mdPull={1} sm={5} className="section-well" style={{ width: 400, margin: '100px 0' }}>
+                <ReactHover className="landing-page-markers" options={optionsCursorTrueWithMargin}>
+                  <ReactHover.Trigger type='trigger'>
+                    <Button bsStyle="primary" bsSize="large">
+                      <h1>Standups{/*Sitting down at home, or not, meet other people in our online hangouts.*/}</h1>
+                    </Button>
+                  </ReactHover.Trigger>
+                  <ReactHover.Hover type='hover'>
+                    <p><img src={logo} className="App-logo" alt="logo" /></p>
+                  </ReactHover.Hover>
+                </ReactHover>
             </Col>
           </Row>
           </ScrollAnimation>
           <ScrollAnimation animateIn="tada" offset={10} delay={6000} animateOnce={true}>
           <Row>
-            <Col xsOffset={3} sm={5} class="section-well">
-              <p class='landing-page-markers you-are-here'>Real Projects{/*: Satisfy real charity customers with open source code for great causes around the world.*/}
+            <Col xsOffset={3} sm={5} className="section-well">
+              <p className='landing-page-markers you-are-here'>Real Projects{/*: Satisfy real charity customers with open source code for great causes around the world.*/}
                 <img src={logo} className="App-logo" alt="logo" />
               </p>
             </Col>
@@ -65,8 +66,8 @@ class App extends Component {
           </ScrollAnimation>
           <ScrollAnimation animateIn="tada" offset={10} delay={10000} animateOnce={true}>
           <Row>
-            <Col xsOffset={8} sm={5} class="section-well">
-              <p class='landing-page-markers you-are-here'>Sprints{/*: Now you have got yourself introduced and interested in a project, why not commit to a sprint or two? */}
+            <Col xsOffset={8} sm={5} className="section-well">
+              <p className='landing-page-markers you-are-here'>Sprints{/*: Now you have got yourself introduced and interested in a project, why not commit to a sprint or two? */}
                 <img src={logo} className="App-logo" alt="logo" />
               </p>
             </Col>
@@ -74,8 +75,8 @@ class App extends Component {
           </ScrollAnimation>
           <ScrollAnimation animateIn="tada" offset={10} delay={12000} animateOnce={true}>
           <Row>
-            <Col xsOffset={6} sm={5} class="section-well">
-              <p class='landing-page-markers you-are-here'>Jobs{/*: Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.*/}
+            <Col xsOffset={6} sm={5} className="section-well">
+              <p className='landing-page-markers you-are-here'>Jobs{/*: Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.*/}
                 <img src={logo} className="App-logo" alt="logo" />
               </p>
             </Col>
