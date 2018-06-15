@@ -72,13 +72,12 @@ class App extends Component {
                   <h1>Real Projects</h1>
                 </Button>
                 <Modal
-                  dialogClassName="orange-background"
                   show={this.state.show} onHide={this.handleClose}
                 >
                   <Modal.Header closeButton>
                     <Modal.Title>Real Projects</Modal.Title>
                   </Modal.Header>
-                  <Modal.Body componentClass="orange-background">
+                  <Modal.Body>
                     <p className='landing-page-markers you-are-here'>Satisfy real charity customers with open source code for great causes around the world.
                       <img src={logo} className="App-logo" alt="logo" />
                     </p>
