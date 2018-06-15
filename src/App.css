@@ -38,6 +38,14 @@
   padding: 30px 30px;
 }
 
-.orange-background, .modal-content {
+.modal-content {
   background-color: orange;
+}
+
+.modal-header {
+  border-bottom: 0px;
+}
+
+.close {
+ font-size: 32px;
 }

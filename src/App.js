@@ -74,8 +74,7 @@ class App extends Component {
                 <Modal
                   show={this.state.show} onHide={this.handleClose}
                 >
-                  <Modal.Header closeButton>
-                    <Modal.Title>Real Projects</Modal.Title>
+                  <Modal.Header closeButton closeLabel="close window">
                   </Modal.Header>
                   <Modal.Body>
                     <p className='landing-page-markers you-are-here'>Satisfy real charity customers with open source code for great causes around the world.
