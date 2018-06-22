@@ -18,16 +18,22 @@ class App extends Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      show: false
+      here: false,
+      standups: false,
+      projects: false
     };
   }
 
-  handleClose() {
-    this.setState({ show: false });
+  handleClose(id) {
+    this.setState({ here: false });
+    // this.setState({ standups: false });
+    // this.setState({ projects: false });
   }
 
-  handleShow() {
-    this.setState({ show: true });
+  handleShow(id) {
+     this.setState({ here: true });
+     // this.setState({ standups: true });
+     // this.setState({ projects: true });
   }
 
   render() {
@@ -48,7 +54,7 @@ class App extends Component {
                 <h1>You are here!</h1>
               </Button>
               <Modal
-                show={this.state.show} onHide={this.handleClose}
+                show={this.state.here} onHide={this.handleClose}
               >
                 <Modal.Header closeButton closeLabel="close window">
                 </Modal.Header>
@@ -62,11 +68,11 @@ class App extends Component {
           </Row>
           <Row>
             <Col xsOffset={0} mdPull={2} sm={5}>
-              <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>
+              <Button bsStyle="primary" bsSize="large" onClick={this.handleShow, 'standups'}>
                 <h1>Standups</h1>
               </Button>
               <Modal
-                show={this.state.show} onHide={this.handleClose}
+                show={this.state.standups} onHide={this.handleClose}
               >
                 <Modal.Header closeButton closeLabel="close window">
                 </Modal.Header>
@@ -80,11 +86,11 @@ class App extends Component {
           </Row>
           <Row>
             <Col xsOffset={3} sm={5}>
-              <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>
+              <Button bsStyle="primary" bsSize="large" onClick={this.handleShow, 'projects'}>
                 <h1>Real Projects</h1>
               </Button>
               <Modal
-                show={this.state.show} onHide={this.handleClose}
+                show={this.state.projects} onHide={this.handleClose}
               >
                 <Modal.Header closeButton closeLabel="close window">
                 </Modal.Header>
