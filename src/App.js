@@ -22,8 +22,8 @@ class App extends Component {
     };
   }
 
-  handleClose(id) {
-    this.setState({show: id});
+  handleClose() {
+    this.setState({show: null});
   }
 
   handleShow(id) {
