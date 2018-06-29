@@ -68,8 +68,8 @@ class App extends Component {
                 <Modal.Header closeButton closeLabel="close window">
                 </Modal.Header>
                 <Modal.Body>
-                  <p className='landing-page-markers you-are-here'>Sitting down at home, or not, meet other people in our online hangouts.
-                      <img src={logo} className="App-logo" alt="logo" />
+                  <img src={logo} className="App-logo" alt="logo" align="right"/>
+                  <p className='landing-page-markers you-are-here'>Sitting down at home, or not, meet other people in our online hangouts.  
                   </p>
                 </Modal.Body>
               </Modal>
