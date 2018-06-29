@@ -3,6 +3,7 @@ import { Modal, Grid, Col, Row, Well, Button } from 'react-bootstrap';
 
 import logo from './logo.png';
 import ladydev from './Lady-dev.png';
+import scrum from './Scrum.png';
 import AVNavbar from './AVNavbar';
 import './App.css';
 
@@ -50,8 +51,8 @@ class App extends Component {
                 <Modal.Header closeButton closeLabel="close window">
                 </Modal.Header>
                 <Modal.Body>
+                  <img src={ladydev} alt="lady dev" className="lady-dev" />
                   <p className='landing-page-markers you-are-here'>Tired of toy projects, tutorials and online courses?
-                      <img src={ladydev} alt="lady dev" className="lady-dev" />
                   </p>
                 </Modal.Body>
               </Modal>
@@ -68,8 +69,8 @@ class App extends Component {
                 <Modal.Header closeButton closeLabel="close window">
                 </Modal.Header>
                 <Modal.Body>
-                  <img src={logo} className="App-logo" alt="logo" align="right"/>
-                  <p className='landing-page-markers you-are-here'>Sitting down at home, or not, meet other people in our online hangouts.  
+                  <img src={scrum} className="lady-dev" alt="logo" />
+                  <p className='landing-page-markers you-are-here'>Sitting down at home, or not, meet other people in our online hangouts.
                   </p>
                 </Modal.Body>
               </Modal>
