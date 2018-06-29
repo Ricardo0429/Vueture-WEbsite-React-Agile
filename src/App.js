@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import { Modal, Grid, Col, Row, Well, Button } from 'react-bootstrap';
-import 'animate.css/animate.min.css';
-import ScrollAnimation from 'react-animate-on-scroll';
-import ReactHover from 'react-hover';
-
 
 import logo from './logo.png';
 import ladydev from './Lady-dev.png';
