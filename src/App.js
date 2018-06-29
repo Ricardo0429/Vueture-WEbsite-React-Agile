@@ -6,6 +6,7 @@ import ReactHover from 'react-hover';
 
 
 import logo from './logo.png';
+import ladydev from './Lady-dev.png';
 import AVNavbar from './AVNavbar';
 import './App.css';
 
@@ -54,7 +55,7 @@ class App extends Component {
                 </Modal.Header>
                 <Modal.Body>
                   <p className='landing-page-markers you-are-here'>Tired of toy projects, tutorials and online courses?
-                      <img src={logo} className="App-logo" alt="logo" />
+                      <img src={ladydev} alt="lady dev" />
                   </p>
                 </Modal.Body>
               </Modal>
