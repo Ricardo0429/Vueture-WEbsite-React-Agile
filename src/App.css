@@ -34,8 +34,9 @@
 
 .you-are-here {
   font-size: 32px;
-  margin: 30px 30px;
-  padding: 30px 30px;
+  margin: 0px 30px 30px;
+  padding: 0px 30px 30px;
+  overflow: hidden;
 }
 
 .modal-content {
@@ -46,6 +47,14 @@
   border-bottom: 0px;
 }
 
+.modal-body: {
+  padding-top: 0px;
+}
+
 .close {
  font-size: 32px;
+}
+
+.lady-dev {
+  float: right;
 }

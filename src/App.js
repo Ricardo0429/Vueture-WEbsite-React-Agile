@@ -51,7 +51,7 @@ class App extends Component {
                 </Modal.Header>
                 <Modal.Body>
                   <p className='landing-page-markers you-are-here'>Tired of toy projects, tutorials and online courses?
-                      <img src={ladydev} alt="lady dev" />
+                      <img src={ladydev} alt="lady dev" className="lady-dev" />
                   </p>
                 </Modal.Body>
               </Modal>
