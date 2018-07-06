@@ -3,6 +3,7 @@ import { Modal, Grid, Col, Row, Well, Button } from 'react-bootstrap';
 
 import logo from './logo.png';
 import ladydev from './Lady-dev.png';
+import realprojects from './real-projects.png';
 import scrum from './Scrum.png';
 import AVNavbar from './AVNavbar';
 import './App.css';
@@ -42,7 +43,7 @@ class App extends Component {
         <Grid>
           <Row>
             <Col xsOffset={1} sm={5}>
-              <Button bsStyle="primary" bsSize="large" onClick={() => this.handleShow('here')}>
+              <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow('here')}>
                 <h1>You are here!</h1>
               </Button>
               <Modal
@@ -60,7 +61,7 @@ class App extends Component {
           </Row>
           <Row>
             <Col xsOffset={0} mdPull={2} sm={5}>
-              <Button bsStyle="primary" bsSize="large" onClick={() => this.handleShow('standups')}>
+              <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow('standups')}>
                 <h1>Standups</h1>
               </Button>
               <Modal
@@ -78,7 +79,7 @@ class App extends Component {
           </Row>
           <Row>
             <Col xsOffset={3} sm={5}>
-              <Button bsStyle="primary" bsSize="large" onClick={() => this.handleShow('projects')}>
+              <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow('projects')}>
                 <h1>Real Projects</h1>
               </Button>
               <Modal
@@ -87,8 +88,8 @@ class App extends Component {
                 <Modal.Header closeButton closeLabel="close window">
                 </Modal.Header>
                 <Modal.Body>
+                  <img src={realprojects} className="real-projects" alt="logo" />
                   <p className='landing-page-markers you-are-here'>Satisfy real charity customers with open source code for great causes around the world.
-                      <img src={logo} className="App-logo" alt="logo" />
                   </p>
                 </Modal.Body>
               </Modal>
@@ -96,7 +97,7 @@ class App extends Component {
           </Row>
           <Row>
             <Col xsOffset={8} sm={5}>
-              <Button bsStyle="primary" bsSize="large" onClick={() => this.handleShow('sprints')}>
+              <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow('sprints')}>
                 <h1>Sprints</h1>
               </Button>
               <Modal
@@ -114,7 +115,7 @@ class App extends Component {
           </Row>
           <Row>
             <Col xsOffset={6} sm={5}>
-              <Button bsStyle="primary" bsSize="large" onClick={() => this.handleShow('jobs')}>
+              <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow('jobs')}>
                 <h1>Jobs</h1>
               </Button>
               <Modal
@@ -123,8 +124,8 @@ class App extends Component {
                 <Modal.Header closeButton closeLabel="close window">
                 </Modal.Header>
                 <Modal.Body>
+                  <img src={logo} className="App-logo" alt="logo" />
                   <p className='landing-page-markers you-are-here'> Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.
-                      <img src={logo} className="App-logo" alt="logo" />
                   </p>
                 </Modal.Body>
               </Modal>

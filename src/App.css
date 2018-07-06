@@ -54,7 +54,11 @@
  font-size: 32px;
 }
 
-.lady-dev {
+.lady-dev, .real-projects {
   float: right;
   padding: 0px 10px 0px 5px;
+}
+
+button {
+  margin: 100px;
 }
