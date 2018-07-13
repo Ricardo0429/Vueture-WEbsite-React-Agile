@@ -4,6 +4,8 @@ import { Modal, Grid, Col, Row, Well, Button } from 'react-bootstrap';
 import logo from './logo.png';
 import ladydev from './Lady-dev.png';
 import realprojects from './real-projects.png';
+import runners from './runners.svg';
+import jobs from './jobs.png';
 import scrum from './Scrum.png';
 import AVNavbar from './AVNavbar';
 import './App.css';
@@ -46,14 +48,14 @@ class App extends Component {
           buttonText: 'Sprints',
           xsOffset: 8,
           reactId: 'sprints',
-          image: realprojects,
+          image: runners,
           modalText: 'Now you have got yourself introduced and interested in a project, why not commit to a sprint or two?'
       },
       {
           buttonText: 'Jobs',
           xsOffset: 6,
           reactId: 'jobs',
-          image: realprojects,
+          image: jobs,
           modalText: 'Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.'
       }
     ]
