@@ -42,6 +42,20 @@ class App extends Component {
         image: realprojects,
         modalText: 'Satisfy real charity customers with open source code for great causes around the world.'
       },
+      {
+          buttonText: 'Sprints',
+          xsOffset: 8,
+          reactId: 'sprints',
+          image: realprojects,
+          modalText: 'Now you have got yourself introduced and interested in a project, why not commit to a sprint or two?'
+      },
+      {
+          buttonText: 'Jobs',
+          xsOffset: 6,
+          reactId: 'jobs',
+          image: realprojects,
+          modalText: 'Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.'
+      }
     ]
   }
 
@@ -93,42 +107,6 @@ class App extends Component {
           {/* loop */}
           {this.renderRows()}
 
-          <Row>
-            <Col xsOffset={8} sm={5}>
-              <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow('sprints')}>
-                <h1>Sprints</h1>
-              </Button>
-              <Modal
-                show={this.state.show == 'sprints'} onHide={this.handleClose}
-              >
-                <Modal.Header closeButton closeLabel="close window">
-                </Modal.Header>
-                <Modal.Body>
-                  <p className='landing-page-markers you-are-here'>Now you have got yourself introduced and interested in a project, why not commit to a sprint or two?
-                      <img src={logo} className="App-logo" alt="logo" />
-                  </p>
-                </Modal.Body>
-              </Modal>
-            </Col>
-          </Row>
-          <Row>
-            <Col xsOffset={6} sm={5}>
-              <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow('jobs')}>
-                <h1>Jobs</h1>
-              </Button>
-              <Modal
-                show={this.state.show == 'jobs'} onHide={this.handleClose}
-              >
-                <Modal.Header closeButton closeLabel="close window">
-                </Modal.Header>
-                <Modal.Body>
-                  <img src={logo} className="App-logo" alt="logo" />
-                  <p className='landing-page-markers you-are-here'> Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.
-                  </p>
-                </Modal.Body>
-              </Modal>
-            </Col>
-          </Row>
         </Grid>
       </div >
     );
