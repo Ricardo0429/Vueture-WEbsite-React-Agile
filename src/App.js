@@ -19,6 +19,14 @@ class App extends Component {
     this.state = {
       show: null
     };
+    this.modals = [
+      {
+        buttonText: 'You are here!',
+        reactId: 'here',
+        imageName: 'ladydev',
+        modalText: 'Tired of toy projects, tutorials and online courses?'
+      }
+    ]
   }
 
   handleClose() {
@@ -27,6 +35,31 @@ class App extends Component {
 
   handleShow(id) {
     this.setState({show: id});
+  }
+
+  renderRows() {
+    return this.modals.map(modal => {
+      return (
+        <Row>
+        <Col xsOffset={1} sm={5}>
+          <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow('here')}>
+            <h1>{modal.buttonText}</h1>
+          </Button>
+          <Modal
+            show={this.state.show == 'here'} onHide={this.handleClose}
+          >
+            <Modal.Header closeButton closeLabel="close window">
+            </Modal.Header>
+            <Modal.Body>
+              <img src={ladydev} alt="lady dev" className="lady-dev" />
+              <p className='landing-page-markers you-are-here'>Tired of toy projects, tutorials and online courses?
+              </p>
+            </Modal.Body>
+          </Modal>
+        </Col>
+      </Row>
+      )
+    });  
   }
 
   render() {
@@ -41,24 +74,9 @@ class App extends Component {
         <AVNavbar />
 
         <Grid>
-          <Row>
-            <Col xsOffset={1} sm={5}>
-              <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow('here')}>
-                <h1>You are here!</h1>
-              </Button>
-              <Modal
-                show={this.state.show == 'here'} onHide={this.handleClose}
-              >
-                <Modal.Header closeButton closeLabel="close window">
-                </Modal.Header>
-                <Modal.Body>
-                  <img src={ladydev} alt="lady dev" className="lady-dev" />
-                  <p className='landing-page-markers you-are-here'>Tired of toy projects, tutorials and online courses?
-                  </p>
-                </Modal.Body>
-              </Modal>
-            </Col>
-          </Row>
+
+          {/* loop */}
+          {this.renderRows()}
           <Row>
             <Col xsOffset={0} mdPull={2} sm={5}>
               <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow('standups')}>
