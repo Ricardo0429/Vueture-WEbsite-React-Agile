@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Modal, Grid, Col, Row, Well, Button } from 'react-bootstrap';
 
-import logo from './logo.png';
-import ladydev from './Lady-dev.png';
-import realprojects from './real-projects.png';
-import runners from './runners.svg';
-import jobs from './jobs.png';
-import scrum from './Scrum.png';
+import logo from './images/logo.png';
+import ladydev from './images/Lady-dev.png';
+import realprojects from './images/real-projects.png';
+import runners from './images/runners.svg';
+import jobs from './images/jobs.png';
+import scrum from './images/Scrum.png';
 import AVNavbar from './AVNavbar';
 import './App.css';
 
@@ -21,6 +21,7 @@ class App extends Component {
     this.state = {
       show: null
     };
+
     this.modals = [
       {
         buttonText: 'You are here!',
@@ -45,19 +46,19 @@ class App extends Component {
         modalText: 'Satisfy real charity customers with open source code for great causes around the world.'
       },
       {
-          buttonText: 'Sprints',
-          xsOffset: 8,
-          reactId: 'sprints',
-          image: runners,
-          modalText: 'Now you have got yourself introduced and interested in a project, why not commit to a sprint or two?'
+        buttonText: 'Sprints',
+        xsOffset: 8,
+        reactId: 'sprints',
+        image: runners,
+        modalText: 'Now you have got yourself introduced and interested in a project, why not commit to a sprint or two?'
       },
       {
-          buttonText: 'Jobs',
-          xsOffset: 6,
-          reactId: 'jobs',
-          image: jobs,
-          modalText: 'Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.'
-      }
+        buttonText: 'Jobs',
+        xsOffset: 6,
+        reactId: 'jobs',
+        image: jobs,
+        modalText: 'Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.'
+       }
     ]
   }
 
@@ -69,7 +70,7 @@ class App extends Component {
     this.setState({show: id});
   }
 
-  renderRows() {
+  renderModals() {
     return this.modals.map(modal => {
       return (
         <Row>
@@ -105,10 +106,7 @@ class App extends Component {
         <AVNavbar />
 
         <Grid>
-
-          {/* loop */}
-          {this.renderRows()}
-
+          {this.renderModals()}
         </Grid>
       </div >
     );
