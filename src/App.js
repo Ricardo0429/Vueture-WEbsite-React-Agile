@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Modal, Grid, Col, Row, Well, Button } from 'react-bootstrap';
+import React, { Component } from 'react'
+import { Modal, Grid, Col, Row, Well, Button } from 'react-bootstrap'
 
-import logo from './images/logo.png';
-import ladydev from './images/Lady-dev.png';
-import realprojects from './images/real-projects.png';
-import runners from './images/runners.svg';
-import jobs from './images/jobs.png';
-import scrum from './images/Scrum.png';
-import AVNavbar from './AVNavbar';
-import './App.css';
+import logo from './images/logo.png'
+import codingWithCat from './images/coding-with-cat.svg'
+import realprojects from './images/real-projects.png'
+import runners from './images/runners.svg'
+import jobs from './images/jobs.png'
+import scrum from './images/Scrum.png'
+import AVNavbar from './AVNavbar'
+import './App.css'
 
 class App extends Component {
 
@@ -27,7 +27,7 @@ class App extends Component {
         buttonText: 'You are here!',
         xsOffset: 1,
         reactId: 'here',
-        image: ladydev,
+        image: codingWithCat,
         modalText: 'Tired of toy projects, tutorials and online courses?'
       },
       {
@@ -84,7 +84,7 @@ class App extends Component {
             <Modal.Header closeButton closeLabel="close window">
             </Modal.Header>
             <Modal.Body>
-              <img src={modal.image} alt="lady dev" className="lady-dev" />
+              <img src={modal.image} width='250px' alt='coding-with-cat' className="coding-with-cat" />
               <p className='landing-page-markers you-are-here'>{modal.modalText}</p>
             </Modal.Body>
           </Modal>
