@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Modal, Grid, Col, Row, Button } from 'react-bootstrap';
+import React, { Component } from 'react'
+import { Modal, Grid, Col, Row, Well, Button } from 'react-bootstrap'
 
-import logo from './images/logo.png';
-import ladydev from './images/Lady-dev.png';
-import realprojects from './images/real-projects.png';
-import runners from './images/runners.svg';
-import jobs from './images/jobs.png';
-import scrum from './images/Scrum.png';
-import AVNavbar from './AVNavbar';
-import './App.css';
+import logo from './images/logo.png'
+import codingWithCat from './images/coding-with-cat.svg'
+import realprojects from './images/real-projects.svg'
+import runners from './images/runners.svg'
+import jobs from './images/jobs.svg'
+import scrum from './images/scrum.svg'
+import AVNavbar from './AVNavbar'
+import './App.css'
 
 class App extends Component {
 
@@ -27,37 +27,47 @@ class App extends Component {
         buttonText: 'You are here!',
         xsOffset: 1,
         reactId: 'here',
-        image: ladydev,
+        image: codingWithCat,
+        imageAltText: 'working on a computer at home with cat',
+        imageWidth: '250px',
         modalText: 'Tired of toy projects, tutorials and online courses?'
       },
       {
-        buttonText: 'Standups',
+        buttonText: 'Scrums',
         xsOffset: 0,
         mdPull: 2,
-        reactId: 'standups',
+        reactId: 'scrums',
         image: scrum,
-        modalText: 'Sitting down at home, or not, meet other people in our online hangouts.'
+        imageAltText: 'team sitting round a table with kanban board in background',
+        imageWidth: '350px',
+        modalText: 'Meet others and plan your work in online hangouts.'
       },
       {
         buttonText: 'Real Projects',
         xsOffset: 3,
         reactId: 'projects',
         image: realprojects,
-        modalText: 'Satisfy real charity customers with open source code for great causes around the world.'
+        imageAltText: 'shaking hands with business client across desk',
+        imageWidth: '320px',
+        modalText: 'Satisfy real charity clients around the world.'
       },
       {
         buttonText: 'Sprints',
-        xsOffset: 8,
+        xsOffset: 7,
         reactId: 'sprints',
         image: runners,
-        modalText: 'Now you have got yourself introduced and interested in a project, why not commit to a sprint or two?'
+        imageAltText: 'two people running',
+        imageWidth: '320px',
+        modalText: 'Commit to a week long sprint to accelerate your learning.'
       },
       {
         buttonText: 'Jobs',
-        xsOffset: 6,
+        xsOffset: 5,
         reactId: 'jobs',
         image: jobs,
-        modalText: 'Premium members can get compensated for their time on paid projects, and many other alumni have gone on to great things in the wider world.'
+        imageAltText: 'person holding briefcase looking towards city',
+        imageWidth: '300px',
+        modalText: 'Get paid for in-house projects or go on to great things in the wider world.'
        }
     ]
   }
@@ -84,7 +94,7 @@ class App extends Component {
             <Modal.Header closeButton closeLabel="close window">
             </Modal.Header>
             <Modal.Body>
-              <img src={modal.image} alt="lady dev" className="lady-dev" />
+              <img src={modal.image} width={modal.imageWidth} alt={modal.imageAltText} className="modal-image" />
               <p className='landing-page-markers you-are-here'>{modal.modalText}</p>
             </Modal.Body>
           </Modal>
