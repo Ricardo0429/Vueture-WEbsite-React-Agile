@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Grid, Col, Row, Well, Button } from 'react-bootstrap'
+import { Modal, Grid, Col, Row, Button } from 'react-bootstrap'
 
 import logo from './images/logo.png'
 import codingWithCat from './images/coding-with-cat.svg'
@@ -83,7 +83,7 @@ class App extends Component {
   renderModals() {
     return this.modals.map(modal => {
       return (
-        <Row>
+        <Row key={modal.reactId}>
         <Col xsOffset={modal.xsOffset} sm={5} mdPull={modal.mdPull}>
           <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow(modal.reactId)}>
             <h1>{modal.buttonText}</h1>
