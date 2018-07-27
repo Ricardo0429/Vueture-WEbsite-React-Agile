@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Grid, Col, Row, Well, Button } from 'react-bootstrap';
+import { Modal, Grid, Col, Row, Button } from 'react-bootstrap';
 
 import logo from './images/logo.png';
 import ladydev from './images/Lady-dev.png';
@@ -79,7 +79,7 @@ class App extends Component {
             <h1>{modal.buttonText}</h1>
           </Button>
           <Modal
-            show={this.state.show == modal.reactId} onHide={this.handleClose}
+            show={this.state.show === modal.reactId} onHide={this.handleClose}
           >
             <Modal.Header closeButton closeLabel="close window">
             </Modal.Header>
