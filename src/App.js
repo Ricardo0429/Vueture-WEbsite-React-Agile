@@ -7,7 +7,7 @@ import realprojects from './images/real-projects.svg'
 import runners from './images/runners.svg'
 import jobs from './images/jobs.svg'
 import scrum from './images/scrum.svg'
-import AVNavbar from './AVNavbar'
+import AVNavbar from './components/AVNavbar'
 import './App.css'
 
 class App extends Component {
