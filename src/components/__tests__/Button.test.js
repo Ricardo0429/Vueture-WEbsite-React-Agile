@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from '../../App.js';
+import { Button } from 'react-bootstrap';
 
 describe('Button', () => {
   it('should be defined', () => {
@@ -9,7 +9,7 @@ describe('Button', () => {
 
   it('should render correctly', () => {
    const tree = shallow(
-     <Button name='button test' />
+     <Button>button test</Button>
    );
    expect(tree).toMatchSnapshot();
   });
@@ -20,8 +20,10 @@ describe('Button', () => {
 
   it('should have a button value', () => {
    const tree = shallow(
-     <Button name='button test' />
+     <Button>button test</Button>
    );
-   expect(tree.getElement('.button').value).toEqual('button test');
+
+   expect(tree.find('button')).toHaveLength(1);
+   expect(tree.find('button').html()).toContain('button test');
  });
 });
