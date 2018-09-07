@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Column from '../../App.js';
+import { Col } from 'react-bootstrap';
 
-describe('Column', () => {
+describe('Col', () => {
   it('renders without crashing', () => {
-    shallow(<Column />);
+    shallow(<Col />);
   });
 });

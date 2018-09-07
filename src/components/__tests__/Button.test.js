@@ -14,10 +14,6 @@ describe('Button', () => {
    expect(tree).toMatchSnapshot();
   });
 
-  // it('renders without crashing', () => {
-  //   shallow(<Button />);
-  // });
-
   it('should have a button value', () => {
    const tree = shallow(
      <Button>button test</Button>
