@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import logo from './logo.png';
-import AVNavbar from './AVNavbar';
+import logo from './images/logo.png';
+import AVNavbar from './components/AVNavbar';
 import './App.css';
 
 class AboutUs extends Component {
