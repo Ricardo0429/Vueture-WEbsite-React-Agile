@@ -24,7 +24,9 @@ class AVNavbar extends Component {
                 </NavItem>
               </LinkContainer>
               <NavDropdown eventKey={3} title="Events" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>Upcoming Events</MenuItem>
+                <LinkContainer to='events'>
+                  <MenuItem eventKey={3.1}>Upcoming Events</MenuItem>
+                </LinkContainer>
                 <MenuItem eventKey={3.2}>Live Events</MenuItem>
                 <MenuItem eventKey={3.3}>Past Events</MenuItem>
                 <MenuItem divider />
