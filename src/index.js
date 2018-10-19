@@ -6,11 +6,12 @@ import AboutUs from './AboutUs';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import EventsList from './components/EventsList';
+import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      <Route path='/' component={App} />
+      <Route exact path='/' component={App} />
       <Route path='/about-us' component={AboutUs} />
       <Route path='/events' component={EventsList} />
     </Switch>
