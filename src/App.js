@@ -7,7 +7,7 @@ import realprojects from './images/real-projects.svg'
 import runners from './images/runners.svg'
 import jobs from './images/jobs.svg'
 import scrum from './images/scrum.svg'
-import AVNavbar from './components/AVNavbar'
+import Navbar from './components/Navbar'
 import './App.css'
 
 class App extends Component {
@@ -113,7 +113,7 @@ class App extends Component {
           <h2>Boost your team coding skills!</h2>
         </header>
 
-        <AVNavbar />
+        <Navbar />
 
         <Grid>
           {this.renderModals()}

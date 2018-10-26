@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AVNavbar from '../AVNavbar';
+import Navbar from '../Navbar';
 
-describe('AVNavbar', () => {
+describe('Navbar', () => {
   it('renders without crashing', () => {
-    shallow(<AVNavbar />);
+    shallow(<Navbar />);
   });
 });

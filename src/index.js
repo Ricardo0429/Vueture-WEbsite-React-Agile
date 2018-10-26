@@ -14,6 +14,7 @@ ReactDOM.render(
       <Route exact path='/' component={App} />
       <Route path='/about-us' component={AboutUs} />
       <Route path='/events' component={EventsList} />
-    </Switch>
+      <Route path='/getting-started' component={EventsList} />
+   </Switch>
   </BrowserRouter>, document.getElementById('root'));
 registerServiceWorker();

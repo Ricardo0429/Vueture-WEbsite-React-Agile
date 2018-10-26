@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import logo from './images/logo.png';
-import AVNavbar from './components/AVNavbar';
+import Navbar from './components/Navbar';
 import './App.css';
 
 class AboutUs extends Component {
@@ -12,7 +12,7 @@ class AboutUs extends Component {
           <h1 className="App-title">Welcome to AgileVentures</h1>
         </header>
  
-        <AVNavbar/>
+        <Navbar/>
 
         <p className="App-intro">
           About Us
