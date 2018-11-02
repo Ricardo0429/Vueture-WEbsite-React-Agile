@@ -1,25 +1,33 @@
 import React, { Component } from "react";
 import { Menu, Segment, Dropdown } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
+import "../assets/Navbar.css";
 
 export class Navbar extends Component {
-  state = { activeItem: "agileVentures" };
+  state = { activeItem: "/" };
+
+  componentDidMount() {
+    const {location: { pathname }} = this.props;
+    if (pathname) {
+      this.setState({
+        activeItem: pathname.length > 1 ? pathname.slice(1) : pathname
+      });
+    }
+  }
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
-
     this.props.history.push(name);
   };
-  handleDropdowntemClick = (e, { name }) => {
+  handleDropdownItemClick = (e, { name }) => {
     this.setState({ activeItem: "events" });
-
     this.props.history.push(name);
   };
   render() {
     const { activeItem } = this.state;
-
+    console.log("this: ", activeItem);
     return (
-      <Segment inverted>
+      <Segment className="av-navbar" inverted>
         <Menu inverted pointing secondary>
           <Menu.Item
             header
@@ -47,17 +55,25 @@ export class Navbar extends Component {
           <Dropdown
             item
             text="Events"
-            active={activeItem === "events"}
             onClick={() => this.setState({ activeItem: "events" })}
           >
             <Dropdown.Menu>
-              <Dropdown.Item name="events" onClick={this.handleDropdownItemClick}>
+              <Dropdown.Item
+                name="events"
+                onClick={this.handleDropdownItemClick}
+              >
                 Upcoming Events
               </Dropdown.Item>
-              <Dropdown.Item name="hangouts" onClick={this.handleDropdownItemClick}>
+              <Dropdown.Item
+                name="hangouts"
+                onClick={this.handleDropdownItemClick}
+              >
                 Live Events
               </Dropdown.Item>
-              <Dropdown.Item name="hangouts" onClick={this.handleDropdownItemClick}>
+              <Dropdown.Item
+                name="hangouts"
+                onClick={this.handleDropdownItemClick}
+              >
                 Past Events
               </Dropdown.Item>
               <Dropdown.Item name="new" onClick={this.handleDropdownItemClick}>
