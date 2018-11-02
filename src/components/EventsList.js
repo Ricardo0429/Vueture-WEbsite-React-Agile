@@ -12,10 +12,20 @@ export default class EventsList extends Component {
   }
 
   componentDidMount() {
+    //todo remove this when we start using redux
+    this.mounted = true;
+
     axios.get("https://www.agileventures.org/events.json").then(response => {
       console.log(response.data);
-      this.setState({ events: response.data });
+      if (this.mounted) {
+        this.setState({ events: response.data });
+      }
     });
+  }
+
+  componentWillUnmount() {
+    //todo: remove this when we start using redux
+    this.mounted = false;
   }
   render() {
     return (
