@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Menu, Segment, Dropdown } from "semantic-ui-react";
+import { Menu, Segment } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 import "../assets/Navbar.css";
+import {DropdownMenu} from './DropdownMenu';
 
 export class Navbar extends Component {
   state = { activeItem: "/" };
@@ -19,10 +20,16 @@ export class Navbar extends Component {
     this.setState({ activeItem: name });
     this.props.history.push(name);
   };
+  
   handleDropdownItemClick = (e, { name }) => {
     this.setState({ activeItem: "events" });
     this.props.history.push(name);
   };
+
+  handleActiveItem = () => {
+    this.setState({ activeItem: "events" })
+  }
+
   render() {
     const { activeItem } = this.state;
     console.log("this: ", activeItem);
@@ -52,35 +59,9 @@ export class Navbar extends Component {
           >
             About Us
           </Menu.Item>
-          <Dropdown
-            item
-            text="Events"
-            onClick={() => this.setState({ activeItem: "events" })}
-          >
-            <Dropdown.Menu>
-              <Dropdown.Item
-                name="events"
-                onClick={this.handleDropdownItemClick}
-              >
-                Upcoming Events
-              </Dropdown.Item>
-              <Dropdown.Item
-                name="hangouts"
-                onClick={this.handleDropdownItemClick}
-              >
-                Live Events
-              </Dropdown.Item>
-              <Dropdown.Item
-                name="hangouts"
-                onClick={this.handleDropdownItemClick}
-              >
-                Past Events
-              </Dropdown.Item>
-              <Dropdown.Item name="new" onClick={this.handleDropdownItemClick}>
-                Create an Event
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          
+          <DropdownMenu handleActiveItem={this.handleActiveItem} handleDropdownItemClick={this.handleDropdownItemClick} />
+          
           <Menu.Item
             history={this.props.history}
             name="sign-in"

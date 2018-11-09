@@ -37,8 +37,7 @@ export default class EventsList extends Component {
                 <Card.Content>
                   <Card.Header>{event.title}</Card.Header>
                   <Card.Meta>
-                    {event.start}
-                    {event.end}
+                  {new Date(event.start).toUTCString()} - {new Date(event.end).toUTCString()}
                   </Card.Meta>
                 </Card.Content>
               </Card>
