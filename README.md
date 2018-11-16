@@ -20,3 +20,5 @@ Run
 ```
 $ yarn start
 ```
+ 
+ We recently had issues with `yarn test` on macs, which were solved with `brew install watchman`
