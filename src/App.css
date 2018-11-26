@@ -66,3 +66,6 @@
 ul {
   list-style: none;
 }
+.rbc-month-row {
+  min-height: 100px;
+}
