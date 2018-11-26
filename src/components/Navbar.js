@@ -3,6 +3,9 @@ import { Menu, Segment } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 import "../assets/Navbar.css";
 import {DropdownMenu} from './DropdownMenu';
+import Sticky from './Sticky'
+
+import logo from '../images/logo.png'
 
 export class Navbar extends Component {
   state = { activeItem: "/" };
@@ -34,7 +37,9 @@ export class Navbar extends Component {
     const { activeItem } = this.state;
     console.log("this: ", activeItem);
     return (
-      <Segment className="av-navbar" inverted>
+     <React.Fragment>
+    <Sticky>
+         <Segment className="av-navbar" inverted>
         <Menu inverted pointing secondary>
           <Menu.Item
             header
@@ -79,6 +84,11 @@ export class Navbar extends Component {
           </Menu.Item>
         </Menu>
       </Segment>
+      </Sticky>
+     
+     </React.Fragment>
+   
+ 
     );
   }
 }

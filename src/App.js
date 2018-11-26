@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Modal, Grid, Col, Row, Button } from 'react-bootstrap'
 
-import logo from './images/logo.png'
 import codingWithCat from './images/coding-with-cat.svg'
 import realprojects from './images/real-projects.svg'
 import runners from './images/runners.svg'
@@ -106,14 +105,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">AgileVentures</h1>
-          <h2>Boost your team coding skills!</h2>
-        </header>
-
-        <Navbar />
+      <div className="App">   
 
         <Grid>
           {this.renderModals()}
