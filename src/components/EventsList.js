@@ -1,45 +1,73 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchEvents } from "../actions/getEventsActions";
-import { Card, Container } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { fetchEvents } from "../actions/getEventsAction";
+import { Card, Container, Button } from "semantic-ui-react";
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-
+import "../assets/eventsList.css";
 class EventsList extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
+      events: [],
       time: []
     };
   }
 
   componentDidMount() {
-    this.props.fetchEvents();
+    if (!this.props.events.length) {
+      this.props.fetchEvents();
+    }
   }
   render() {
-    console.log(this.props.events);
+    let events = this.props.events.length
+      ? this.props.events
+      : JSON.parse(window.localStorage.getItem("events")) || [];
+
     const localizer = BigCalendar.momentLocalizer(moment);
     return (
       <Container>
-        <BigCalendar localizer={localizer} events={this.props.events} />
+        <div>
+          <h1 className="events-header">
+            AgileVentures Events
+            <Button
+              content="New Event"
+              attached="right"
+              className="new-event-button"
+            />
+          </h1>
+          <p>
+            We are hosting several events a day using Google Hangouts. Feel free
+            to join in if you want to get involved or if you a curious about
+            Pair Programming and Agile. Each event will have a link to an online
+            Hangout prior to start time.
+          </p>
+        </div>
+        <BigCalendar
+          className="big-calendar"
+          localizer={localizer}
+          events={events}
+        />
 
-        <Card.Group>
-          {this.props.events.map((event, id) => {
-            return (
-              <Card key={id}>
-                <Card.Content>
-                  <Card.Header>{event.title}</Card.Header>
-                  <Card.Meta>
-                    {moment(event.start).format("MM-DD hh:mm")} -{" "}
-                    {moment(event.end).format("MM-DD hh:mm")}
-                  </Card.Meta>
-                </Card.Content>
-              </Card>
-            );
-          })}
-        </Card.Group>
+        {events.map((event, id) => {
+          return (
+            <Card fluid key={id} className="event-cards">
+              <Card.Content>
+                <Link to={`/${id}`} className="event-title">
+                  <big>
+                    <Card.Header>{event.title}</Card.Header>
+                  </big>
+                </Link>
+                <Card.Meta>
+                  {moment(event.start).format("MM-DD hh:mm")} -{" "}
+                  {moment(event.end).format("MM-DD hh:mm")}
+                </Card.Meta>
+              </Card.Content>
+            </Card>
+          );
+        })}
       </Container>
     );
   }

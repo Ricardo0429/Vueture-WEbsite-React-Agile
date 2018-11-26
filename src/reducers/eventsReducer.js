@@ -1,6 +1,6 @@
 import { GET_EVENTS } from "../types";
 
-const eventsReducer = (state = [], action) => {
+const eventsReducer = (state = { events: [] }, action) => {
   switch (action.type) {
     case GET_EVENTS:
       return { ...state, events: action.payload };
@@ -9,4 +9,4 @@ const eventsReducer = (state = [], action) => {
   }
 };
 
-export default eventsReducer
+export default eventsReducer;

@@ -1,17 +1,15 @@
 import React, { Component } from "react";
-import { Menu, Segment } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 import "../assets/Navbar.css";
-import {DropdownMenu} from './DropdownMenu';
-import Sticky from './Sticky'
-
-import logo from '../images/logo.png'
-
+import { DropdownMenu } from "./DropdownMenu";
 export class Navbar extends Component {
   state = { activeItem: "/" };
 
   componentDidMount() {
-    const {location: { pathname }} = this.props;
+    const {
+      location: { pathname }
+    } = this.props;
     if (pathname) {
       this.setState({
         activeItem: pathname.length > 1 ? pathname.slice(1) : pathname
@@ -23,24 +21,22 @@ export class Navbar extends Component {
     this.setState({ activeItem: name });
     this.props.history.push(name);
   };
-  
+
   handleDropdownItemClick = (e, { name }) => {
     this.setState({ activeItem: "events" });
     this.props.history.push(name);
   };
 
   handleActiveItem = () => {
-    this.setState({ activeItem: "events" })
-  }
+    this.setState({ activeItem: "events" });
+  };
 
   render() {
     const { activeItem } = this.state;
     console.log("this: ", activeItem);
     return (
-     <React.Fragment>
-    <Sticky>
-         <Segment className="av-navbar" inverted>
-        <Menu inverted pointing secondary>
+      <div>
+        <Menu className="av-navbar" fixed="top" pointing>
           <Menu.Item
             header
             name="/"
@@ -64,9 +60,12 @@ export class Navbar extends Component {
           >
             About Us
           </Menu.Item>
-          
-          <DropdownMenu handleActiveItem={this.handleActiveItem} handleDropdownItemClick={this.handleDropdownItemClick} />
-          
+
+          <DropdownMenu
+            handleActiveItem={this.handleActiveItem}
+            handleDropdownItemClick={this.handleDropdownItemClick}
+          />
+
           <Menu.Item
             history={this.props.history}
             name="sign-in"
@@ -83,12 +82,7 @@ export class Navbar extends Component {
             Sign Up
           </Menu.Item>
         </Menu>
-      </Segment>
-      </Sticky>
-     
-     </React.Fragment>
-   
- 
+      </div>
     );
   }
 }

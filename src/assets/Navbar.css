@@ -1,4 +1,10 @@
 .av-navbar {
-  margin: 0px !important;
+  margin: 0px 0px 15px 0px !important;
   border-radius: 0% !important;
+  background-color: #34495E !important;
+}
+
+.av-navbar a, .text, .icon {
+  color: white !important;
+  font-size: 20px !important;
 }
