@@ -21,6 +21,11 @@ class EventsList extends Component {
       this.props.fetchEvents();
     }
   }
+
+  componentDidUpdate() {
+    window.localStorage.setItem("events", JSON.stringify(this.props.events));
+  }
+
   render() {
     let events = this.props.events.length
       ? this.props.events
