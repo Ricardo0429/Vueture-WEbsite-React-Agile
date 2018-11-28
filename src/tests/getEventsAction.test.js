@@ -1,7 +1,7 @@
 import moxios from "moxios";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
-import { fetchEvents } from "./getEventsAction";
+import { fetchEvents } from "../actions/getEventsAction";
 import { GET_EVENTS } from "../types";
 import eventResponse from "../fixtures/events.js";
 
