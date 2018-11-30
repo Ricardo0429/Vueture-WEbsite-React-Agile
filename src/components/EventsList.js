@@ -25,7 +25,7 @@ class EventsList extends Component {
   componentDidUpdate() {
     window.localStorage.setItem("events", JSON.stringify(this.props.events));
   }
-
+  ready;
   render() {
     let events = this.props.events.length
       ? this.props.events
@@ -70,6 +70,9 @@ class EventsList extends Component {
                   {moment(event.end).format("MM-DD hh:mm")}
                 </Card.Meta>
               </Card.Content>
+              <Card.Description>
+                {event.description.substring(0, 120)}
+              </Card.Description>
             </Card>
           );
         })}

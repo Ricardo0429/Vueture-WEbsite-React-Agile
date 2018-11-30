@@ -15,10 +15,10 @@ export const DropdownMenu = ({ handleActiveItem, handleDropdownItemClick }) => {
         Upcoming Events
     </Dropdown.Item>
       <Dropdown.Item
-        name="hangouts"
+        name="scrums"
         onClick={handleDropdownItemClick}
       >
-        Live Events
+        Past Scrums
     </Dropdown.Item>
       <Dropdown.Item
         name="hangouts"
