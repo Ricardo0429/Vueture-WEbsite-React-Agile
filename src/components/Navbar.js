@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Menu } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
-import "../assets/Navbar.css";
 import { DropdownMenu } from "./DropdownMenu";
+import "../assets/Navbar.css";
 export class Navbar extends Component {
   state = { activeItem: "/" };
 
@@ -10,10 +10,10 @@ export class Navbar extends Component {
     const {
       location: { pathname }
     } = this.props;
-    if (pathname) {
-      this.setState({
-        activeItem: pathname.length > 1 ? pathname.slice(1) : pathname
-      });
+    if (pathname.length > 1) {
+      this.setState({ activeItem: pathname.slice(1) });
+    } else {
+      this.setState({ activeItem: pathname });
     }
   }
 
@@ -33,7 +33,6 @@ export class Navbar extends Component {
 
   render() {
     const { activeItem } = this.state;
-    console.log("this: ", activeItem);
     return (
       <div>
         <Menu className="av-navbar" fixed="top" pointing>
@@ -86,6 +85,5 @@ export class Navbar extends Component {
     );
   }
 }
- 
 
 export default withRouter(Navbar);
