@@ -20,7 +20,6 @@ Run
 ```
 $ yarn start
 ```
-
 Dokku Deployment
 -----------------
 
