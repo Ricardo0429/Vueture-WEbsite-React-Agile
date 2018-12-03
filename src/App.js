@@ -5,7 +5,6 @@ import realprojects from "./images/real-projects.svg";
 import runners from "./images/runners.svg";
 import jobs from "./images/jobs.svg";
 import scrum from "./images/scrum.svg";
-import Navbar from "./components/Navbar";
 import "./App.css";
 
 class App extends Component {
@@ -118,7 +117,6 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Navbar />
         <Grid>{this.renderModals()}</Grid>
       </React.Fragment>
     );

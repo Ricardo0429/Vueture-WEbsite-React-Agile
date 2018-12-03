@@ -1,10 +1,32 @@
-.av-navbar {
-  margin: 0px 0px 15px 0px !important;
+#main-header {
+  background-color: #ee7335 !important;
+  height: 60px !important;
+}
+
+#main-header a {
+  color: #fff !important;
+  font-size: 1.2em;
+  padding: 0px 15px !important;
+}
+
+.navbar-brand {
+  float: left;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
+}
+
+#nav {
+  margin: 60px 0px 15px 0px !important;
+  height: 50px !important;
   border-radius: 0% !important;
   background-color: #34495E !important;
 }
 
-.av-navbar a, .text, .icon {
-  color: white !important;
-  font-size: 20px !important;
+#nav a, .text, .icon {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff !important;
+  font-size: 16px !important;
 }

@@ -1,11 +1,9 @@
-import React from "react"
-import mount from enzyme
+import React from "react";
+import { mount } from "enzyme";
 
-describe("EventsList", () =>{
+describe("EventsList", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = mount(
-      <EventsList />
-    );
-  });  
-})
+    wrapper = mount(<EventsList />);
+  });
+});
