@@ -45,7 +45,7 @@ export class Navbar extends Component {
                 src={AVLogoInverse}
                 width="170"
                 height="26"
-                class="navbar-brand"
+                className="navbar-brand"
               />
               <Menu.Item
                 history={this.props.history}
@@ -69,7 +69,7 @@ export class Navbar extends Component {
         <div>
           <Menu id="nav" fixed="top" pointing secondary>
             <Container>
-              <Grid container="true">
+              <Grid container={true}>
                 <Grid.Row>
                   <Grid.Column width={3} />
                   <Menu.Item
