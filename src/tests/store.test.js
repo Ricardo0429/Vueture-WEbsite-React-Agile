@@ -9,7 +9,7 @@ describe("Store", () => {
     })
   
     expect(store.getState()).toEqual({
-      events: ["Run the tests"]
+      events: ["Run the tests"], projects: []
     })
   })  
 });

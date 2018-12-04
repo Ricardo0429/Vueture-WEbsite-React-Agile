@@ -1,9 +1,10 @@
 import { GET_PROJECTS } from "../types";
+import initialState from "./initialState";
 
-const projectsReducer = (state = { projects: [] }, action) => {
+const projectsReducer = (state = initialState.projects, action) => {
   switch (action.type) {
     case GET_PROJECTS:
-      return { ...state, projects: action.payload };
+      return [ ...action.payload ];
     default:
       return state;
   }

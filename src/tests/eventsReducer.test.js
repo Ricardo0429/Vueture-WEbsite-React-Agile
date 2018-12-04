@@ -3,7 +3,7 @@ import { GET_EVENTS } from "../types";
 
 describe("eventsReducer", () => {
   it("defaults to empty events if none are passed in", () => {
-    expect(eventsReducer(undefined, {})).toEqual({ events: [] });
+    expect(eventsReducer(undefined, {})).toEqual([]);
   });
 
   it("reduces events", () => {
@@ -12,8 +12,6 @@ describe("eventsReducer", () => {
         type: GET_EVENTS,
         payload: ["Run the tests"]
       })
-    ).toEqual({
-      events: ["Run the tests"]
-    });
+    ).toEqual(["Run the tests"]);
   });
 });
