@@ -19,7 +19,7 @@ describe("fetchProjects action", () => {
     moxios.uninstall();
   });
 
-  it("fetches projects from external api", () => {
+  it("fetches projects from an external api", () => {
     const expectedActions = [{ type: GET_PROJECTS, payload: projectsResponse }];
     moxios.stubRequest(
       "https://develop.websiteone.agileventures.org/api/v1/projects",

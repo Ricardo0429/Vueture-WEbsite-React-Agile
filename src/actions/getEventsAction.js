@@ -5,7 +5,6 @@ export let getEvents = events => ({ type: GET_EVENTS, payload: events });
 
 export let fetchEvents = () => dispatch => {
   return axios.get("https://www.agileventures.org/events.json").then(response => {
-    console.log(response);
     dispatch(getEvents(response.data));
   });
 };
