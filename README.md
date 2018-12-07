@@ -51,3 +51,5 @@ $ ssh avp-dokku domains:add agileventures-react-front-end-production react.agile
 Ensure has the DNS Zone on Azure is set correctly:
 
 ![Azure DNS Zone configuration pane](https://dl.dropbox.com/s/dzgh7i3sn4wrxqz/Screenshot%202018-11-01%2013.32.30.png?dl=0)
+
+

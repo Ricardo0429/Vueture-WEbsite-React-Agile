@@ -1,20 +1,5 @@
-.event-cards {
-  height: 120px;
-}
-
-.event-title {
-  color: #EE7335;
-  font-size: x-large;
-  font-weight: bold;
-  margin: 5px 10px 15px 0;
-}
-
-.event-title:hover {
-  color: #34495E;
-}
-
 .big-calendar {
-  margin-top: 50px;
+  margin: 50px;
 }
 
 .events-header {
