@@ -10,8 +10,8 @@ describe("eventsReducer", () => {
     expect(
       eventsReducer([], {
         type: GET_EVENTS,
-        payload: ["Run the tests"]
+        payload: ["Event to be added to store"]
       })
-    ).toEqual(["Run the tests"]);
+    ).toEqual(["Event to be added to store"]);
   });
 });

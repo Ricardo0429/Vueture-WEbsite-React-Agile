@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import fullLogo from "../images/full_logo2.png";
 
 function Project(props) {
-  console.log(props);
   return (
     <Card className="project-card">
       <Image
@@ -12,7 +11,7 @@ function Project(props) {
         size="large"
       />
       <Card.Content>
-        <Link to={`/${props.project.id}`} className="project-title">
+        <Link to={`/projects/${props.project.id}`} className="project-title">
           <big>
             <Card.Header>{props.project.title}</Card.Header>
           </big>

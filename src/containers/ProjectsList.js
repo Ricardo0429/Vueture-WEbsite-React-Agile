@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Card } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { fetchProjects } from "../actions/getProjectsAction";
@@ -13,9 +13,9 @@ export class ProjectsList extends Component {
   renderProject() {
     const { projects } = this.props;
     if (projects.length > 0) {
-      return projects.map(project => {
-        return <Project key={project.id} project={project} />;
-      });
+      return projects.map(project => (
+        <Project key={project.id} project={project} />
+      ));
     }
   }
   render() {
