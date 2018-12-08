@@ -1,0 +1,17 @@
+ul.card-footer {
+  display: flex;
+  padding-left: 0px !important;
+}
+
+.card-footer li {
+  margin: 20px 20px 0px 0px;
+}
+
+.project-image {
+  height: 262px;
+  max-width: 262px;
+}
+
+.project-card {
+  max-width: 262px !important;
+}

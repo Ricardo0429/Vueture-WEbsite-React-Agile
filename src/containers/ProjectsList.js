@@ -13,6 +13,7 @@ export class ProjectsList extends Component {
   renderProject() {
     const { projects } = this.props;
     if (projects.length > 0) {
+      console.log(this.props)
       return projects.map(project => (
         <Project key={project.id} project={project} />
       ));

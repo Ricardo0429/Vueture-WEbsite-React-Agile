@@ -44,7 +44,7 @@ export class Navbar extends Component {
           <Menu id="main-header" fixed="top">
             <Container>
               <Menu.Item name="/" onClick={this.handleItemClick}>
-                <img src={AVLogoInverse} className="navbar-brand" />
+                <img src={AVLogoInverse} className="navbar-brand" alt="AgileVentures logo"/>
               </Menu.Item>
               <Menu.Item
                 history={this.props.history}
