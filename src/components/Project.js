@@ -2,8 +2,15 @@ import React from "react";
 import { Card, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import fullLogo from "../images/full_logo2.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUsers  } from "@fortawesome/free-solid-svg-icons";
 
 function Project(props) {
+  const listElements = [
+    <FontAwesomeIcon icon={faUsers} />
+
+  ];
+  const listItems = listElements.map(item => <li>{item}</li>)
   return (
     <Card className="project-card">
       <Image
@@ -16,6 +23,7 @@ function Project(props) {
             <Card.Header>{props.project.title}</Card.Header>
           </big>
         </Link>
+        <ul>{listItems}</ul>
       </Card.Content>
     </Card>
   );
