@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
-import { Card, Header, Pagination } from "semantic-ui-react";
+import { Card, Header } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { fetchProjects } from "../actions/getProjectsAction";
-import Project from "../components/Project";
 import { Link } from "react-router-dom";
 import Select from "react-select";
+import PaginateProjects from "../components/PaginateProjects";
 import "../assets/ProjectsList.css";
 export class ProjectsList extends Component {
   constructor(props) {
@@ -12,13 +12,9 @@ export class ProjectsList extends Component {
     this.state = {
       selectedOption: null,
       projects: [],
-      activePage: 5,
-      boundaryRange: 1,
-      siblingRange: 1,
-      showEllipsis: true,
-      showFirstAndLastNav: true,
-      showPreviousAndNextNav: true,
-      totalPages: 20
+      offset: 0,
+      pageCount: 10,
+      perPage: 12
     };
   }
 
@@ -27,63 +23,43 @@ export class ProjectsList extends Component {
       this.props.fetchProjects();
     }
   }
-  renderProject() {
-    const { projects } = this.props;
-    if (this.state.selectedOption) {
-      return this.state.projects.map(project => (
-        <Project key={project.id} project={project} />
-      ));
-    } else if (projects.length > 0) {
-      return projects.map(project => (
-        <Project key={project.id} project={project} />
-      ));
-    }
-  }
 
-  languagesSelectObject() {
-    let projectsLanguages = [];
-    this.props.projects.map(project => {
-      if (project.languages.length > 0) {
-        projectsLanguages.push.apply(projectsLanguages, project.languages);
+  handleFilterByLang() {
+    let lang = new Set();
+    let { projects } = this.props;
+    projects.map(project => {
+      if (project.languages.length) {
+        return project.languages.forEach(lang.add, lang);
       }
-      projectsLanguages = projectsLanguages.filter((item, pos) => {
-        return projectsLanguages.indexOf(item) === pos;
-      });
     });
-    let languages = projectsLanguages.map(language => ({
-      label: language,
-      value: language
-    }));
-    return languages;
+    return [...lang].map(lang => ({ label: lang, value: lang }));
   }
 
   handleChange = selectedOption => {
     let filteredProjects = [];
-    return this.props.projects.map(project => {
-      if (project.languages.length > 0) {
-        return project.languages.map(lang => {
-          if (lang === selectedOption.value) {
-            filteredProjects.push(project);
-          }
-        });
+    let { projects } = this.props;
+    projects.map(project => {
+      if (project.languages.length) {
+        if (project.languages.includes(selectedOption.value)) {
+          filteredProjects.push(project);
+        }
       }
       this.setState({ selectedOption, projects: filteredProjects });
     });
   };
 
-  handlePaginationChange = (e, { activePage }) => this.setState({ activePage });
+  handlePageClick = data => {
+    let selected = data.selected;
+    let offset = Math.ceil(selected * this.state.perPage);
+    console.log(offset);
+
+    this.setState({ offset: offset }, () => {
+      this.props.fetchProjects();
+    });
+  };
 
   render() {
-    const {
-      activePage,
-      boundaryRange,
-      siblingRange,
-      showEllipsis,
-      showFirstAndLastNav,
-      showPreviousAndNextNav,
-      totalPages,
-      selectedOption
-    } = this.state;
+    const { selectedOption } = this.state;
     return (
       <Fragment>
         <Header className="projects-list-header">List of Projects</Header>
@@ -98,28 +74,24 @@ export class ProjectsList extends Component {
         <div className="search-dropdown">
           <Select
             value={selectedOption}
-            options={this.languagesSelectObject()}
+            options={this.handleFilterByLang()}
             onChange={this.handleChange}
             placeholder="Search for project by programming language"
           />
         </div>
         <Card.Group centered itemsPerRow={3}>
-          {this.renderProject()}
+          <PaginateProjects
+            projects={this.props.projects}
+            selectedOption={this.state.selectedOption}
+            handlePrevious={"previous"}
+            handleNext={"next"}
+            breakLabel={"..."}
+            pageCount={this.state.pageCount}
+            pageRangeDisplayed={7}
+            onPageChange={this.handlePageClick}
+            activeClassName={"active"}
+          />
         </Card.Group>
-        <Pagination
-          activePage={activePage}
-          boundaryRange={boundaryRange}
-          onPageChange={this.handlePaginationChange}
-          size="mini"
-          siblingRange={siblingRange}
-          totalPages={totalPages}
-          // Heads up! All items are powered by shorthands, if you want to hide one of them, just pass `null` as value
-          ellipsisItem={showEllipsis ? undefined : null}
-          firstItem={showFirstAndLastNav ? undefined : null}
-          lastItem={showFirstAndLastNav ? undefined : null}
-          prevItem={showPreviousAndNextNav ? undefined : null}
-          nextItem={showPreviousAndNextNav ? undefined : null}
-        />
       </Fragment>
     );
   }

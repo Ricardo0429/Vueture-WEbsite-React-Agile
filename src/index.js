@@ -12,7 +12,6 @@ import Navbar from "./components/Navbar";
 import ProjectsList from "./containers/ProjectsList";
 import Standuply from "./images/standuply.png";
 import Mooqita from "./images/mooqita.png";
-import CraftBanner from "./images/craft_banner_2.png";
 import AmazonSmile from "./images/amazon_smile.png";
 import "semantic-ui-css/semantic.min.css";
 import "./index.css";
@@ -37,7 +36,6 @@ ReactDOM.render(
               <Grid.Column width={4}>
                 <Header as='h2' textAlign="center">Supporters</Header>
                 <Image src={Standuply} centered={true} className="supporter-images"/>
-                <Image src={CraftBanner} centered={true} className="supporter-images"/>
                 <Image src={Mooqita} centered={true} className="supporter-images"/>
                 <Image src={AmazonSmile} centered={true} className="supporter-images"/>
                 <Button negative fluid>Become a Supporter</Button>
