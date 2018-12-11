@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import "../assets/Project.css";
+
 function Project(props) {
   return (
     <Card className="project-card">
@@ -21,15 +22,15 @@ function Project(props) {
         </Link>
         <ul className="card-footer">
           <li>
-            <FontAwesomeIcon icon={faUsers} size="lg" />
+            <FontAwesomeIcon icon={faUsers} size="lg" /> { }
             {props.project.followers}
           </li>
           <li>
-            <FontAwesomeIcon icon={faFileAlt} size="lg" />
+            <FontAwesomeIcon icon={faFileAlt} size="lg" /> { }
             {props.project.documents}
           </li>
           <li>
-            <FontAwesomeIcon icon={faGithubAlt} size="lg" />
+            <FontAwesomeIcon icon={faGithubAlt} size="lg" /> { }
             {props.project.commit_count}
           </li>
         </ul>

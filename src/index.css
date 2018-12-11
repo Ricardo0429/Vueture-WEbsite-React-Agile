@@ -9,5 +9,9 @@ body {
 }
 
 .main-content {
-  margin-top: 140px !important;
+  margin-top: 180px !important;
+}
+
+.supporter-images {
+  margin: 15px 0px;
 }

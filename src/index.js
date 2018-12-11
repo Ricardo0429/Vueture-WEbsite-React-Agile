@@ -6,12 +6,16 @@ import App from "./App";
 import AboutUs from "./AboutUs";
 import registerServiceWorker from "./registerServiceWorker";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Container } from "semantic-ui-react";
+import { Container, Grid, Image, Header, Button } from "semantic-ui-react";
 import EventsList from "./components/EventsList";
 import Navbar from "./components/Navbar";
 import ProjectsList from "./containers/ProjectsList";
+import Standuply from "./images/standuply.png";
+import Mooqita from "./images/mooqita.png";
+import CraftBanner from "./images/craft_banner_2.png";
+import AmazonSmile from "./images/amazon_smile.png";
 import "semantic-ui-css/semantic.min.css";
-import './index.css';
+import "./index.css";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -19,13 +23,27 @@ ReactDOM.render(
       <React.Fragment>
         <Navbar />
         <Container className="main-content">
-          <Switch>
-            <Route exact path="/" component={App} />
-            <Route path="/about-us" component={AboutUs} />
-            <Route path="/projects" component={ProjectsList} />
-            <Route path="/events" component={EventsList} />
-            <Route path="/getting-started" component={EventsList} />
-          </Switch>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={12}>
+                <Switch>
+                  <Route exact path="/" component={App} />
+                  <Route path="/about-us" component={AboutUs} />
+                  <Route path="/projects" component={ProjectsList} />
+                  <Route path="/events" component={EventsList} />
+                  <Route path="/getting-started" component={EventsList} />
+                </Switch>
+              </Grid.Column>
+              <Grid.Column width={4}>
+                <Header as='h2' textAlign="center">Supporters</Header>
+                <Image src={Standuply} centered={true} className="supporter-images"/>
+                <Image src={CraftBanner} centered={true} className="supporter-images"/>
+                <Image src={Mooqita} centered={true} className="supporter-images"/>
+                <Image src={AmazonSmile} centered={true} className="supporter-images"/>
+                <Button negative fluid>Become a Supporter</Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Container>
       </React.Fragment>
     </Provider>
