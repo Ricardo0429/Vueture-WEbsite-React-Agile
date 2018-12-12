@@ -7,7 +7,7 @@ import { faUsers, faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import "../assets/Project.css";
 
-function Project(props) {
+const Project = (props) => {
   return (
     <Card className="project-card">
       <Image
