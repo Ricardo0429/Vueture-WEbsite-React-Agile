@@ -4,6 +4,7 @@
 
 .pagination {
   display: inline-block;
+  padding-top: 20px;
 }
 
 .pagination span {
@@ -31,4 +32,8 @@
 .pagination span:last-child {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.hide-button {
+  display: none;
 }

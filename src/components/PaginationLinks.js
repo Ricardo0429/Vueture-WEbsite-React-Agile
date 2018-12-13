@@ -6,7 +6,9 @@ const PaginationLinks = ({
   handlePageSelect,
   selectedPage,
   handlePrevious,
-  handleNext
+  handleNext,
+  firstPage,
+  lastPage
 }) => {
   const pageItems = [];
   for (let i = 1; i <= pageCount; i++) {
@@ -24,9 +26,9 @@ const PaginationLinks = ({
   return (
     <div className="center">
       <div className="pagination">
-        <span onClick={handlePrevious(selectedPage)}>previous</span>
+        <span onClick={handlePrevious(selectedPage)} className={firstPage ? "hide-button" : undefined} >previous</span>
         {pageItems}
-        <span onClick={handleNext(selectedPage)}>next</span>
+        <span onClick={handleNext(selectedPage)} className={lastPage ? "hide-button" : undefined} >next</span>
       </div>
     </div>
   );

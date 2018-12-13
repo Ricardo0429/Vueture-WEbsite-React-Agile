@@ -3,7 +3,7 @@ import { mount } from "enzyme";
 import Project from "../components/Project";
 import { StaticRouter } from "react-router";
 import projectsFixture from "../fixtures/projects";
-import fullLogo from "../images/full_logo2.png";
+import fullLogo from "../images/full_logo2_agile_ventures.png";
 
 //mount Project component
 describe("Project", () => {
