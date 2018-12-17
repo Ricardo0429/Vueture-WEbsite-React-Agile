@@ -11,26 +11,22 @@ describe("ProjectsList", () => {
   beforeEach(() => {
     wrapper = mount(
       <StaticRouter context={context}>
-        <ProjectsList projects={projectsFixture} fetchProjects={() => {}} />
+        <ProjectsList
+          projects={projectsFixture}
+          fetchProjects={() =>
+            new Promise(function(resolve, _) {
+              setTimeout(function() {
+                resolve("promise");
+              }, 300);
+            })
+          }
+        />
       </StaticRouter>
     );
   });
 
-  it("should have 1 card group and 3 cards", () => {
+  it("should have 1 card group and 1 PaginateProjects component", () => {
     expect(wrapper.find("CardGroup")).toHaveLength(1);
-    expect(wrapper.find("Card")).toHaveLength(3);
-  });
-  
-  it("should have 3 Project components", () => {
-    expect(wrapper.find("Project")).toHaveLength(3);
-  });
-  
-  it("shouldn't render a Project component without projects", () => {
-    const wrapper = mount(
-      <StaticRouter context={context}>
-        <ProjectsList projects={[]} fetchProjects={() => {}} />
-      </StaticRouter>
-    );
-    expect(wrapper.find("Project")).toHaveLength(0);
+    expect(wrapper.find("PaginateProjects")).toHaveLength(1);
   });
 });

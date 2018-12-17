@@ -15,7 +15,8 @@ export default [
     image_url: "http://i.imgur.com/23ePvyN.jpg",
     last_github_update: null,
     slack_channel_name: null,
-    tag_list: []
+    tag_list: [],
+    languages: ["Ruby"]
   },
   {
     id: 76,
@@ -33,7 +34,8 @@ export default [
     image_url: "",
     last_github_update: "2016-07-17T03:44:36.000Z",
     slack_channel_name: null,
-    tag_list: []
+    tag_list: [],
+    languages: ["JavaScript"]
   },
   {
     id: 12,
@@ -53,6 +55,7 @@ export default [
     image_url: null,
     last_github_update: null,
     slack_channel_name: null,
-    tag_list: []
+    tag_list: [],
+    languages: []
   }
 ];

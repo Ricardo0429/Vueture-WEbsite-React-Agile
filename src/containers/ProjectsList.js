@@ -25,29 +25,33 @@ export class ProjectsList extends Component {
     };
   }
 
-
   componentDidMount() {
     if (!this.props.projects.length) {
       this.props.fetchProjects().then(() => {
-        let pageCount = Math.ceil(this.props.projects.length / 12);
-        let projects = {};
-        let lastIndex = 0;
-        for (let i = 1; i <= pageCount; i++) {
-          if (i === 1) {
-            projects[i] = this.props.projects.slice(i - 1, i + 11);
-            lastIndex = i + 11;
-          } else {
-            projects[i] = this.props.projects.slice(lastIndex, lastIndex + 12);
-            lastIndex += 12;
+        if (this.props.projects.length) {
+          let pageCount = Math.ceil(this.props.projects.length / 12);
+          let projects = {};
+          let lastIndex = 0;
+          for (let i = 1; i <= pageCount; i++) {
+            if (i === 1) {
+              projects[i] = this.props.projects.slice(i - 1, i + 11);
+              lastIndex = i + 11;
+            } else {
+              projects[i] = this.props.projects.slice(
+                lastIndex,
+                lastIndex + 12
+              );
+              lastIndex += 12;
+            }
           }
-        }
 
-        this.setState({
-          projects,
-          pageCount,
-          projectsList: projects[1],
-          totalProjects: this.props.projects.length
-        });
+          this.setState({
+            projects,
+            pageCount,
+            projectsList: projects[1],
+            totalProjects: this.props.projects.length
+          });
+        }
       });
     }
   }

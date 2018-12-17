@@ -25,7 +25,7 @@ describe("fetchProjects action", () => {
       "https://develop.websiteone.agileventures.org/api/v1/projects",
       {
         status: 200,
-        response: projectsResponse
+        response: { projects: projectsResponse, languages: { "Autograder": [] }, followers: [], documents: [] }
       }
     );
 
