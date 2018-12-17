@@ -29,11 +29,30 @@ export class ProjectsList extends Component {
   componentDidMount() {
     if (!this.props.projects.length) {
       this.props.fetchProjects().then(() => {
-        this.normalizeProjects();
+          let lastIndex = 0;
+          for (let i = 1; i <= pageCount; i++) {
+            if (i === 1) {
+              projects[i] = this.props.projects.slice(i - 1, i + 11);
+              lastIndex = i + 11;
+            } else {
+              projects[i] = this.props.projects.slice(
+                lastIndex,
+                lastIndex + 12
+              );
+              lastIndex += 12;
+            }
+          }
+
+          this.setState({
+            projects,
+            pageCount,
+            projectsList: projects[1],
+            totalProjects: this.props.projects.length
+          });
+        }
       });
     }
   }
-
   normalizeProjects() {
     let pageCount = Math.ceil(this.props.projects.length / 12);
     let projects = {};
@@ -55,7 +74,8 @@ export class ProjectsList extends Component {
     }
 
     let lang = new Set();
-    let languages = this.props.projects.map(project => {
+    let { projects } = this.props;
+    projects.forEach(project => {
       if (project.languages.length) {
         return project.languages.forEach(lang.add, lang);
       }
@@ -103,17 +123,12 @@ export class ProjectsList extends Component {
   }
 
   handleFilterProjects = selectedOption => {
-    let filteredProjectsList = [];
     let { projects } = this.props;
 
     if (selectedOption) {
-      projects.map(project => {
-        if (project.languages.length) {
-          if (project.languages.includes(selectedOption.value)) {
-            filteredProjectsList.push(project);
-          }
-        }
-      });
+      let filteredProjectsList = projects.filter(project =>
+        project.languages.includes(selectedOption.value)
+      );
       let pageCount = Math.ceil(filteredProjectsList.length / 12);
       let filteredProjects = {};
       let lastIndex = 0;
@@ -143,6 +158,7 @@ export class ProjectsList extends Component {
       });
     }
   };
+
   handlePageSelect = selectedPage => e => {
     e.preventDefault();
     let { selectedOption } = this.state;

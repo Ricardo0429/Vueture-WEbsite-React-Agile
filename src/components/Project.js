@@ -9,7 +9,7 @@ import "../assets/Project.css";
 
 const Project = (props) => {
   return (
-    <Card className="project-card">
+    <Card className="project-card" raised={true}>
       <Image
         src={props.project.image_url ? props.project.image_url : fullLogo}
         className="project-image"
