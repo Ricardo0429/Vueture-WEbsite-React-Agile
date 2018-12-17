@@ -8,10 +8,11 @@ ul.card-footer {
 }
 
 .project-image {
-  height: 262px;
-  max-width: 262px;
+  height: 222px;
+  max-width: 222px;
 }
 
 .project-card {
-  max-width: 262px !important;
+  max-width: 222px !important;
+  margin: 15px 25px !important;
 }
