@@ -1,5 +1,5 @@
 import React from "react";
-import { mount } from "enzyme";
+import { mount, shallow } from "enzyme";
 import { ProjectsList } from "../containers/ProjectsList";
 import projectsFixture from "../fixtures/projects";
 import { StaticRouter } from "react-router";
@@ -30,3 +30,10 @@ describe("ProjectsList", () => {
     expect(wrapper.find("PaginateProjects")).toHaveLength(1);
   });
 });
+
+describe("handlePopulateLanguagesDropdown", () => {
+  it("Returns an unique list of languages", ()=> {
+    const wrapper = shallow(<ProjectsList  projects={projectsFixture}/>);
+    expect( wrapper.instance().handlePopulateLanguagesDropdown()).toHaveLength(3)
+  })
+})

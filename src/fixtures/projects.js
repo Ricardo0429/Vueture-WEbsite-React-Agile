@@ -16,7 +16,7 @@ export default [
     last_github_update: null,
     slack_channel_name: null,
     tag_list: [],
-    languages: ["Ruby"]
+    languages: ["Ruby", "JavaScript"]
   },
   {
     id: 76,
@@ -35,7 +35,7 @@ export default [
     last_github_update: "2016-07-17T03:44:36.000Z",
     slack_channel_name: null,
     tag_list: [],
-    languages: ["JavaScript"]
+    languages: ["JavaScript", "Python"]
   },
   {
     id: 12,
