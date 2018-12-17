@@ -27,6 +27,6 @@ describe("ProjectsList", () => {
 
   it("should have 1 card group and 1 PaginateProjects component", () => {
     expect(wrapper.find("CardGroup")).toHaveLength(1);
-    expect(wrapper.find("PaginateProjects")).toHaveLength(2);
+    expect(wrapper.find("PaginateProjects")).toHaveLength(1);
   });
 });
