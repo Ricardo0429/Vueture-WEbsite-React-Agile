@@ -11,4 +11,5 @@ script:
   - yarn
   - yarn test
   - yarn run build
+  - yarn coveralls
  
