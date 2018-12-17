@@ -59,7 +59,7 @@ export class ProjectsList extends Component {
   handlePopulateLanguagesDropdown() {
     let lang = new Set();
     let { projects } = this.props;
-    projects.map(project => {
+    projects.forEach(project => {
       if (project.languages.length) {
         return project.languages.forEach(lang.add, lang);
       }
@@ -68,17 +68,12 @@ export class ProjectsList extends Component {
   }
 
   handleFilterProjects = selectedOption => {
-    let filteredProjectsList = [];
     let { projects } = this.props;
 
     if (selectedOption) {
-      projects.map(project => {
-        if (project.languages.length) {
-          if (project.languages.includes(selectedOption.value)) {
-            filteredProjectsList.push(project);
-          }
-        }
-      });
+      let filteredProjectsList = projects.filter(project =>
+        project.languages.includes(selectedOption.value)
+      );
       let pageCount = Math.ceil(filteredProjectsList.length / 12);
       let filteredProjects = {};
       let lastIndex = 0;
@@ -108,6 +103,7 @@ export class ProjectsList extends Component {
       });
     }
   };
+
   handlePageSelect = selectedPage => e => {
     e.preventDefault();
     let { selectedOption } = this.state;
