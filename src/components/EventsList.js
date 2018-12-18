@@ -6,7 +6,7 @@ import BigCalendar from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "../assets/eventsList.css";
-class EventsList extends Component {
+export class EventsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
