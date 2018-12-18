@@ -11,7 +11,6 @@ export class ProjectsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: null,
       projectsList: [],
       projects: {},
       filteredProjectsList: null,
@@ -21,85 +20,97 @@ export class ProjectsList extends Component {
       totalProjects: null,
       selectedPage: 1,
       lastPage: true,
-      firstPage: true
+      firstPage: true,
+      selectedLanguage: null,
+      languages: []
     };
   }
 
   componentDidMount() {
     if (!this.props.projects.length) {
-      this.props.fetchProjects().then(() => {
-        if (this.props.projects.length) {
-          let pageCount = Math.ceil(this.props.projects.length / 12);
-          let projects = {};
-          let lastIndex = 0;
-          for (let i = 1; i <= pageCount; i++) {
-            if (i === 1) {
-              projects[i] = this.props.projects.slice(i - 1, i + 11);
-              lastIndex = i + 11;
-            } else {
-              projects[i] = this.props.projects.slice(
-                lastIndex,
-                lastIndex + 12
-              );
-              lastIndex += 12;
-            }
-          }
-
-          this.setState({
-            projects,
-            pageCount,
-            projectsList: projects[1],
-            totalProjects: this.props.projects.length,
-            lastPage: false
-          });
-        }
-      });
+      this.props.fetchProjects();
     }
   }
 
-  handlePopulateLanguagesDropdown() {
-    let lang = new Set();
-    let { projects } = this.props;
-    projects.forEach(project => {
-      if (project.languages.length) {
-        return project.languages.forEach(lang.add, lang);
-      }
-    });
-    return [...lang].map(lang => ({ label: lang, value: lang }));
+  componentWillReceiveProps(nextProps) {
+    if (this.props.projects.length !== nextProps.projects.length) {
+      this.normalizeProjects(nextProps.projects);
+    }
   }
 
-  handleFilterProjects = selectedOption => {
-    let { projects } = this.props;
-
-    if (selectedOption) {
-      let filteredProjectsList = projects.filter(project =>
-        project.languages.includes(selectedOption.value)
-      );
-      let pageCount = Math.ceil(filteredProjectsList.length / 12);
-      let filteredProjects = {};
-      let lastIndex = 0;
-      for (let i = 1; i <= pageCount; i++) {
-        if (i === 1) {
-          filteredProjects[i] = filteredProjectsList.slice(i - 1, i + 11);
-          lastIndex = i + 11;
-        } else {
-          filteredProjects[i] = filteredProjectsList.slice(
-            lastIndex,
-            lastIndex + 12
-          );
-          lastIndex += 12;
-        }
+  normalizeProjects(projects) {
+    let pageCount = Math.ceil(projects.length / 12);
+    let normalizedProjects = {};
+    let lastIndex = 0;
+    
+    for (let i = 1; i <= pageCount; i++) {
+      if (i === 1) {
+        normalizedProjects[i] = projects.slice(i - 1, i + 11);
+        lastIndex = i + 11;
+      } else {
+        normalizedProjects[i] = projects.slice(lastIndex, lastIndex + 12);
+        lastIndex += 12;
       }
-      this.setState({
-        selectedOption,
+    }
+
+    let languages = new Set();
+    projects.forEach(project => {
+      if (project.languages.length) {
+        return project.languages.forEach(languages.add, languages);
+      }
+    });
+
+    [...languages].forEach(lang => {
+      let filteredProjects = projects.filter(project =>
+        project.languages.includes(lang)
+      );
+      this.normalizeFilteredProjects(
         filteredProjects,
-        filteredProjectsList: filteredProjects[1],
-        pageCount
+        lang,
+        normalizedProjects
+      );
+    });
+
+    this.setState({
+      projects: normalizedProjects,
+      pageCount,
+      projectsList: normalizedProjects[1],
+      totalProjects: projects.length,
+      lastPage: false,
+      languages: [...languages]
+    });
+  }
+
+  normalizeFilteredProjects = (items, lang, normalizedProjects) => {
+    let lastIndex = 0;
+    let pageCount = [...Array(Math.ceil(items.length / 12 + 1)).keys()];
+    normalizedProjects[lang] = pageCount.reduce((acc, next) => {
+      if (next === 0) {
+        acc = { [next + 1]: items.slice(next, next + 12) };
+        lastIndex = next + 12;
+        return acc;
+      } else {
+        acc[next +1] = items.slice(lastIndex, lastIndex + 12);
+        lastIndex = next + 12;
+        return acc;
+      }
+    }, {});
+  };
+
+  handlePopulateLanguagesDropdown() {
+    return this.state.languages.map(lang => ({ label: lang, value: lang }));
+  }
+
+  handleFilterProjects = selectedLanguage => {
+    if (selectedLanguage) {
+      this.setState({
+        selectedLanguage,
+        filteredProjectsList: this.state.projects[selectedLanguage.value][1],
+        pageCount: Object.keys(this.state.projects[selectedLanguage.value]).length
       });
     } else {
       this.setState({
-        selectedOption,
-        filteredProjectsList: null,
+        selectedLanguage: null,
         pageCount: Math.ceil(this.props.projects.length / 12)
       });
     }
@@ -107,18 +118,18 @@ export class ProjectsList extends Component {
 
   handlePageSelect = selectedPage => e => {
     e.preventDefault();
-    let { selectedOption } = this.state;
-    if (selectedOption) {
+    let { selectedLanguage, projects } = this.state;
+    if (selectedLanguage) {
       this.setState({
         selectedPage,
-        filteredProjectsList: this.state.filteredProjects[selectedPage],
+        filteredProjectsList: projects[selectedLanguage.value][selectedPage],
         firstPage: selectedPage - 1 < 1 ? true : false,
         lastPage: selectedPage + 1 > this.state.pageCount ? true : false
       });
     } else {
       this.setState({
         selectedPage,
-        projectsList: this.state.projects[selectedPage],
+        projectsList: projects[selectedPage],
         firstPage: selectedPage - 1 < 1 ? true : false,
         lastPage: selectedPage + 1 > this.state.pageCount ? true : false
       });
@@ -179,10 +190,10 @@ export class ProjectsList extends Component {
 
   render() {
     const {
-      selectedOption,
-      filteredProjectsList,
       projectsList,
-      pageCount
+      selectedLanguage,
+      pageCount,
+      filteredProjectsList
     } = this.state;
 
     return (
@@ -198,7 +209,7 @@ export class ProjectsList extends Component {
         </div>
         <div className="search-dropdown">
           <Select
-            value={selectedOption}
+            value={selectedLanguage}
             options={this.handlePopulateLanguagesDropdown()}
             onChange={this.handleFilterProjects}
             placeholder="Search for project by programming language..."
@@ -208,10 +219,8 @@ export class ProjectsList extends Component {
         <Card.Group centered itemsPerRow={3}>
           <PaginateProjects
             projects={filteredProjectsList || projectsList}
-            selectedOption={this.state.selectedOption}
-            breakLabel={"..."}
+            selectedOption={this.state.selectedLanguage}
             pageCount={this.state.pageCount}
-            pageRangeDisplayed={7}
             activeClassName={"active"}
           />
         </Card.Group>
