@@ -9,31 +9,31 @@ import fullLogo from "../images/full_logo2_agile_ventures.png";
 describe("Project", () => {
   let wrapper;
   const context = {};
-  let project = projectsFixture[0];
+  let item = projectsFixture[0];
 
   beforeEach(() => {
     wrapper = mount(
       <StaticRouter context={context}>
-        <Project project={project} />
+        <Project item={item} />
       </StaticRouter>
     );
   });
 
   it("should have an Image with an image url", () => {
-    expect(wrapper.find("Image").prop("src")).toEqual(project.image_url);
+    expect(wrapper.find("Image").prop("src")).toEqual(item.image_url);
   });
 
   it("should use the default image if there is no image url", () => {
-    const project = projectsFixture[2];
+    const item = projectsFixture[2];
     const wrapper = mount(
       <StaticRouter context={context}>
-        <Project project={project} />
+        <Project item={item} />
       </StaticRouter>
     );
     expect(wrapper.find("Image").prop("src")).toEqual(fullLogo);
   });
 
   it("should have a CardHeader with the project's title", () => {
-    expect(wrapper.find("CardHeader").text()).toEqual(project.title);
+    expect(wrapper.find("CardHeader").text()).toEqual(item.title);
   });
 });

@@ -7,31 +7,31 @@ import { faUsers, faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import { faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import "../assets/Project.css";
 
-const Project = (props) => {
+const Project = ({ item:project }) => {
   return (
     <Card className="project-card" raised={true}>
       <Image
-        src={props.project.image_url ? props.project.image_url : fullLogo}
+        src={project.image_url ? project.image_url : fullLogo}
         className="project-image"
       />
       <Card.Content>
-        <Link to={`/projects/${props.project.id}`} className="project-title">
+        <Link to={`/projects/${project.id}`} className="project-title">
           <big>
-            <Card.Header>{props.project.title}</Card.Header>
+            <Card.Header>{project.title}</Card.Header>
           </big>
         </Link>
         <ul className="card-footer">
           <li>
             <FontAwesomeIcon icon={faUsers} size="lg" /> { }
-            {props.project.followers}
+            {project.followers}
           </li>
           <li>
             <FontAwesomeIcon icon={faFileAlt} size="lg" /> { }
-            {props.project.documents}
+            {project.documents}
           </li>
           <li>
             <FontAwesomeIcon icon={faGithubAlt} size="lg" /> { }
-            {props.project.commit_count}
+            {project.commit_count}
           </li>
         </ul>
       </Card.Content>

@@ -1,17 +1,16 @@
 import React from "react";
-import Project from "./Project";
 import { PacmanLoader } from "react-spinners";
 import "../assets/PaginateProjects.css";
 
-const PaginateProjects = ({ projects }) => {
-  let projectsArray;
-  if (projects.length) {
-    projectsArray = projects.map(project => (
-      <Project key={project.id} project={project} />
+const Paginate = ({ items, Component }) => {
+  let itemsArray;
+  if (items.length) {
+    itemsArray = items.map(item => (
+      <Component key={item.id} item={item} />
     ));
   }
   return (
-    projectsArray || (
+    itemsArray || (
       <PacmanLoader
         className="spinner"
         sizeUnit={"px"}
@@ -22,4 +21,4 @@ const PaginateProjects = ({ projects }) => {
   );
 };
 
-export default PaginateProjects;
+export default Paginate;

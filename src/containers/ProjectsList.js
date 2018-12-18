@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import { fetchProjects } from "../actions/getProjectsAction";
 import { Link } from "react-router-dom";
 import Select from "react-select";
-import PaginateProjects from "../components/PaginateProjects";
+import Paginate from "../components/Paginate";
 import PaginationLinks from "../components/PaginationLinks";
 import "../assets/ProjectsList.css";
+import Project from "../components/Project";
 export class ProjectsList extends Component {
   constructor(props) {
     super(props);
@@ -205,8 +206,9 @@ export class ProjectsList extends Component {
           />
         </div>
         <Card.Group centered itemsPerRow={3}>
-          <PaginateProjects
-            projects={filteredProjectsList || projectsList}
+          <Paginate
+            items={filteredProjectsList || projectsList}
+            Component={Project}
             selectedOption={this.state.selectedOption}
             breakLabel={"..."}
             pageCount={this.state.pageCount}

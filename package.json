@@ -13,7 +13,6 @@
     "jest-enzyme": "^6.0.3",
     "moment": "^2.22.2",
     "moxios": "^0.4.0",
-    "pryjs": "^1.0.3",
     "react": "^16.2.0",
     "react-big-calendar": "^0.20.2",
     "react-bootstrap": "^0.32.1",
@@ -35,7 +34,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/registerServiceWorker.js",
+    "test": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/registerServiceWorker.js --collectCoverageFrom=!src/index.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "eject": "react-scripts eject"
   },
