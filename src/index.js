@@ -8,7 +8,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import EventsList from "./components/EventsList";
 import Navbar from "./components/Navbar";
-import { Container, Button } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "./index.css";
 
@@ -16,7 +16,7 @@ ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
       <React.Fragment>
-        <Container class="main-content">
+        <Container className="main-content">
           <Navbar />
           <Switch>
             <Route exact path="/" component={App} />

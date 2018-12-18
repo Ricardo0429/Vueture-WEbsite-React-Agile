@@ -21,7 +21,7 @@ describe("async actions", () => {
 
   it("responds with a list of events", () => {
     const expectedActions = [{ type: GET_EVENTS, payload: eventResponse }];
-    moxios.stubRequest("/events.json", {
+    moxios.stubRequest("https://www.agileventures.org/api/v1/events/upcoming", {
       status: 200,
       response: eventResponse
     });

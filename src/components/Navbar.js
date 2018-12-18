@@ -18,35 +18,34 @@ export class Navbar extends Component {
       this.setState({ activeItem: pathname });
     }
   }
-  
+
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name });
     this.props.history.push(name);
   };
-  
+
   handleDropdownItemClick = (e, { name }) => {
     this.setState({ activeItem: "events" });
     this.props.history.push(name);
   };
-  
+
   handleActiveItem = () => {
     this.setState({ activeItem: "events" });
   };
-  
+
   render() {
-    const element = <FontAwesomeIcon icon={faSearch} size="lg" color="white" pull="right" />
+    const element = (
+      <FontAwesomeIcon icon={faSearch} size="lg" color="white" pull="right" />
+    );
     const { activeItem } = this.state;
     return (
       <div>
         <div>
           <Menu id="main-header" fixed="top">
             <Container>
-              <img
-                src={AVLogoInverse}
-                width="170"
-                height="26"
-                className="navbar-brand"
-              />
+              <Menu.Item name="/" onClick={this.handleItemClick}>
+                <img src={AVLogoInverse} className="navbar-brand" alt="AgileVentures logo"/>
+              </Menu.Item>
               <Menu.Item
                 history={this.props.history}
                 name="sign-in"

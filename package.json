@@ -30,10 +30,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage",
+    "test": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=!src/registerServiceWorker.js",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "enzyme-to-json": "^3.3.5",
+    "jest-localstorage-mock": "^2.3.0"
   }
 }

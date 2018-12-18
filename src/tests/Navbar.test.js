@@ -1,23 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
 import { Navbar } from "../components/Navbar";
-//import { DropdownMenu } from "../components/DropdownMenu";
-
-// describe('DropdownMenu', () => {
-//   const handleActiveItemMock = jest.fn();
-//   const handleDropdownItemClickMock = jest.fn();
-//   const props = {
-//     handleActiveItem: handleActiveItemMock,
-//     handleDropdownItemClick: handleDropdownItemClickMock,
-//   };
-
-//   const wrapper = shallow(<DropdownMenu {..props} />);
-//   test('calls handleDropdownItemClickMock when handleActiveItemMock is called', () => {
-//         wrapper.instance().handleActiveItem();
-
-//     expect(handleActiveItemMock).toHaveBeenCalled();
-//   })
-// })
 
 describe("Navbar", () => {
   let wrapper;
@@ -27,8 +10,8 @@ describe("Navbar", () => {
     );
   });
 
-  it("should have 5 menu items and one dropdown menu", () => {
-    expect(wrapper.find("MenuItem")).toHaveLength(7);
+  it("should have 9 menu items and one dropdown menu", () => {
+    expect(wrapper.find("MenuItem")).toHaveLength(9);
     expect(wrapper.find("DropdownMenu")).toHaveLength(1);
   });
 
