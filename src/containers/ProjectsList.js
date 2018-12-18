@@ -20,7 +20,7 @@ export class ProjectsList extends Component {
       perPage: 12,
       totalProjects: null,
       selectedPage: 1,
-      lastPage: false,
+      lastPage: true,
       firstPage: true
     };
   }
@@ -49,7 +49,8 @@ export class ProjectsList extends Component {
             projects,
             pageCount,
             projectsList: projects[1],
-            totalProjects: this.props.projects.length
+            totalProjects: this.props.projects.length,
+            lastPage: false
           });
         }
       });

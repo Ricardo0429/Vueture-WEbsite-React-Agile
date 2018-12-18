@@ -1,7 +1,6 @@
 import React from "react";
 import Project from "./Project";
-import { PacmanLoader } from "react-spinners";
-import "../assets/PaginateProjects.css";
+import { HashLoader } from "react-spinners";
 
 const PaginateProjects = ({ projects }) => {
   let projectsArray;
@@ -12,10 +11,9 @@ const PaginateProjects = ({ projects }) => {
   }
   return (
     projectsArray || (
-      <PacmanLoader
-        className="spinner"
+      <HashLoader
         sizeUnit={"px"}
-        size={100}
+        size={300}
         color={"#34495E"}
       />
     )
