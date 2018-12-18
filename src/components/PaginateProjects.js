@@ -1,6 +1,6 @@
 import React from "react";
 import Project from "./Project";
-import { HashLoader } from "react-spinners";
+import { RingLoader } from "react-spinners";
 
 const PaginateProjects = ({ projects }) => {
   let projectsArray;
@@ -11,7 +11,7 @@ const PaginateProjects = ({ projects }) => {
   }
   return (
     projectsArray || (
-      <HashLoader
+      <RingLoader
         sizeUnit={"px"}
         size={300}
         color={"#34495E"}
