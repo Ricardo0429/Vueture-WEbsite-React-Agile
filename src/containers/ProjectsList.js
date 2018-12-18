@@ -26,6 +26,14 @@ export class ProjectsList extends Component {
     };
   }
 
+  setInitialState() {
+    this.setState = {
+      selectedPage: 1,
+      firstPage: true,
+      selectedLanguage: null,
+    };
+  }
+
   componentDidMount() {
     if (!this.props.projects.length) {
       this.props.fetchProjects();
@@ -83,13 +91,13 @@ export class ProjectsList extends Component {
 
   normalizeFilteredProjects = (items, lang, normalizedProjects) => {
     let lastIndex = 0;
-    let pageCount = [...Array(Math.ceil(items.length / 12 + 1)).keys()];
+    let pageCount = [...Array(Math.floor(items.length / 12 + 1)).keys()];
     normalizedProjects[lang] = pageCount.reduce((acc, next) => {
       if (next === 0) {
         acc = { [next + 1]: items.slice(next, next + 12) };
         lastIndex = next + 12;
         return acc;
-      } else {
+      } else{
         acc[next +1] = items.slice(lastIndex, lastIndex + 12);
         lastIndex = next + 12;
         return acc;
@@ -102,16 +110,25 @@ export class ProjectsList extends Component {
   }
 
   handleFilterProjects = selectedLanguage => {
+    let { projects } = this.state;
     if (selectedLanguage) {
+      let pageCount = Object.keys(this.state.projects[selectedLanguage.value]).length
       this.setState({
         selectedLanguage,
-        filteredProjectsList: this.state.projects[selectedLanguage.value][1],
-        pageCount: Object.keys(this.state.projects[selectedLanguage.value]).length
+        filteredProjectsList: projects[selectedLanguage.value][1],
+        pageCount,
+        firstPage: true,
+        lastPage: pageCount > 1 ? false : true
       });
     } else {
+      let pageCount = Math.ceil(this.props.projects.length / 12);
       this.setState({
         selectedLanguage: null,
-        pageCount: Math.ceil(this.props.projects.length / 12)
+        pageCount, 
+        selectedPage: 1,
+        filteredProjectsList: null,
+        firstPage: true,
+        lastPage: pageCount > 1 ? false : true
       });
     }
   };
@@ -119,72 +136,15 @@ export class ProjectsList extends Component {
   handlePageSelect = selectedPage => e => {
     e.preventDefault();
     let { selectedLanguage, projects } = this.state;
+      this.setState({
+        selectedPage,
+        firstPage: selectedPage - 1 < 1 ? true : false,
+        lastPage: selectedPage + 1 > this.state.pageCount ? true : false
+      });
     if (selectedLanguage) {
-      this.setState({
-        selectedPage,
-        filteredProjectsList: projects[selectedLanguage.value][selectedPage],
-        firstPage: selectedPage - 1 < 1 ? true : false,
-        lastPage: selectedPage + 1 > this.state.pageCount ? true : false
-      });
+      this.setState({ filteredProjectsList: projects[selectedLanguage.value][selectedPage], });
     } else {
-      this.setState({
-        selectedPage,
-        projectsList: projects[selectedPage],
-        firstPage: selectedPage - 1 < 1 ? true : false,
-        lastPage: selectedPage + 1 > this.state.pageCount ? true : false
-      });
-    }
-  };
-
-  handlePrevious = selectedPage => e => {
-    e.preventDefault();
-    if (selectedPage - 1 <= 1) {
-      this.setState({
-        firstPage: true,
-        selectedPage: selectedPage - 1,
-        projectsList: this.state.projects[selectedPage - 1]
-      });
-      return;
-    }
-
-    if (this.state.filteredProjectsList) {
-      this.setState({
-        selectedPage: selectedPage - 1,
-        filteredProjectsList: this.state.filteredProjects[selectedPage - 1],
-        lastPage: false
-      });
-    } else {
-      this.setState({
-        selectedPage: selectedPage - 1,
-        projectsList: this.state.projects[selectedPage - 1],
-        lastPage: false
-      });
-    }
-  };
-
-  handleNext = selectedPage => e => {
-    e.preventDefault();
-    if (selectedPage + 1 >= this.state.pageCount) {
-      this.setState({
-        lastPage: true,
-        selectedPage: selectedPage + 1,
-        projectsList: this.state.projects[selectedPage + 1]
-      });
-      return;
-    }
-
-    if (this.state.filteredProjectsList) {
-      this.setState({
-        selectedPage: selectedPage + 1,
-        filteredProjectsList: this.state.filteredProjects[selectedPage + 1],
-        firstPage: false
-      });
-    } else {
-      this.setState({
-        selectedPage: selectedPage + 1,
-        projectsList: this.state.projects[selectedPage + 1],
-        firstPage: false
-      });
+      this.setState({ projectsList: projects[selectedPage], });
     }
   };
 
@@ -224,15 +184,13 @@ export class ProjectsList extends Component {
             activeClassName={"active"}
           />
         </Card.Group>
-        <PaginationLinks
-          handlePrevious={this.handlePrevious}
-          handleNext={this.handleNext}
+        {!(pageCount == 1) ?  <PaginationLinks
           pageCount={pageCount}
           selectedPage={this.state.selectedPage}
           handlePageSelect={this.handlePageSelect}
           firstPage={this.state.firstPage}
           lastPage={this.state.lastPage}
-        />
+        />: null}
       </Fragment>
     );
   }
