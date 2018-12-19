@@ -17,12 +17,9 @@ describe("PaginationLinks", () => {
   });
       
   it("should be active when on selected page", () => {
-    let page2 = wrapper.find("span").filterWhere(item => {
-      return item.text() === "2";
-    });
     let activePage = wrapper.find("span").filterWhere(item => {
       return item.hasClass("active");
     });
-    expect(page2).toEqual(activePage);
+    expect(activePage.text()).toEqual("2");
   });
 });

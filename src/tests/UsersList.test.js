@@ -34,4 +34,13 @@ describe("UsersList", () => {
   it("should have a PaginationLinks component", () => {
     expect(wrapper.find("PaginationLinks")).toHaveLength(1);
   });
+
+  it("should call handlePageSelect when a pagination link is clicked", () => {
+    let paginationLink2 = wrapper.find("span").filterWhere(item => {
+      return item.text() === "2";
+    });
+    console.log(wrapper.instance())
+    paginationLink2.simulate("click");
+    expect(wrapper.state().selectedPage).toEqual(2)
+  });
 });

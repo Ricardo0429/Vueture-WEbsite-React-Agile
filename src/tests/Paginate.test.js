@@ -7,8 +7,8 @@ describe("Paginate", () => {
   let User = () => <div />;
   let wrapper = mount(<Paginate items={usersFixture} Component={User} />);
 
-  it("should have a User component", () => {
-    expect(wrapper.find("User")).toHaveLength(1);
+  it("should have 26 User components", () => {
+    expect(wrapper.find("User")).toHaveLength(26);
   });
 
   describe("no users context", () => {
