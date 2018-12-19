@@ -7,7 +7,7 @@ import { StaticRouter } from "react-router";
 describe("UsersList", () => {
   let wrapper;
   const context = {};
-  
+
   wrapper = mount(
     <StaticRouter context={context}>
       <UsersList
@@ -25,5 +25,13 @@ describe("UsersList", () => {
 
   it("should have a header Volunteers Directory", () => {
     expect(wrapper.find("Header").text()).toBe("Volunteers Directory");
+  });
+
+  it("should have a Paginate component", () => {
+    expect(wrapper.find("Paginate")).toHaveLength(1);
+  });
+
+  it("should have a PaginationLinks component", () => {
+    expect(wrapper.find("PaginationLinks")).toHaveLength(1);
   });
 });
