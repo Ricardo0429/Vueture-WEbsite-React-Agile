@@ -8,19 +8,11 @@ export class UsersList extends Component {
 
   handlePageSelect = selectedPage => e => {
     e.preventDefault();
-    let { selectedLanguage, projects } = this.state;
     this.setState({
       selectedPage,
       firstPage: selectedPage - 1 < 1 ? true : false,
       lastPage: selectedPage + 1 > this.state.pageCount ? true : false
     });
-    if (selectedLanguage) {
-      this.setState({
-        filteredProjectsList: projects[selectedLanguage.value][selectedPage]
-      });
-    } else {
-      this.setState({ projectsList: projects[selectedPage] });
-    }
   };
 
   render() {
