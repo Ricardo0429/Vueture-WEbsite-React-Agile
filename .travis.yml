@@ -2,7 +2,6 @@ language: node_js
 node_js:
   - 8
 cache:
-#Need to research where to add Cache travis ci yarn install
   directories:
   - node_modules
   - packages/create-react-app/node_modules
