@@ -11,16 +11,15 @@ import AVNavbar from './components/AVNavbar'
 import './App.css'
 
 class App extends Component {
+  constructor (props, context) {
+    super(props, context)
 
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    this.handleShow = this.handleShow.bind(this)
+    this.handleClose = this.handleClose.bind(this)
 
     this.state = {
       show: null
-    };
+    }
 
     this.modals = [
       {
@@ -68,48 +67,48 @@ class App extends Component {
         imageAltText: 'person holding briefcase looking towards city',
         imageWidth: '300px',
         modalText: 'Get paid for in-house projects or go on to great things in the wider world.'
-       }
+      }
     ]
   }
 
-  handleClose() {
-    this.setState({show: null});
+  handleClose () {
+    this.setState({ show: null })
   }
 
-  handleShow(id) {
-    this.setState({show: id});
+  handleShow (id) {
+    this.setState({ show: id })
   }
 
-  renderModals() {
+  renderModals () {
     return this.modals.map(modal => {
       return (
         <Row key={modal.reactId}>
-        <Col xsOffset={modal.xsOffset} sm={5} mdPull={modal.mdPull}>
-          <Button bsStyle="primary" bsSize="large" block onClick={() => this.handleShow(modal.reactId)}>
-            <h1>{modal.buttonText}</h1>
-          </Button>
-          <Modal
-            show={this.state.show === modal.reactId} onHide={this.handleClose}
-          >
-            <Modal.Header closeButton closeLabel="close window">
-            </Modal.Header>
-            <Modal.Body>
-              <img src={modal.image} width={modal.imageWidth} alt={modal.imageAltText} className="modal-image" />
-              <p className='landing-page-markers you-are-here'>{modal.modalText}</p>
-            </Modal.Body>
-          </Modal>
-        </Col>
-      </Row>
+          <Col xsOffset={modal.xsOffset} sm={5} mdPull={modal.mdPull}>
+            <Button bsStyle='primary' bsSize='large' block onClick={() => this.handleShow(modal.reactId)}>
+              <h1>{modal.buttonText}</h1>
+            </Button>
+            <Modal
+              show={this.state.show === modal.reactId} onHide={this.handleClose}
+            >
+              <Modal.Header closeButton closeLabel='close window'>
+              </Modal.Header>
+              <Modal.Body>
+                <img src={modal.image} width={modal.imageWidth} alt={modal.imageAltText} className='modal-image' />
+                <p className='landing-page-markers you-are-here'>{modal.modalText}</p>
+              </Modal.Body>
+            </Modal>
+          </Col>
+        </Row>
       )
-    });
+    })
   }
 
-  render() {
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">AgileVentures</h1>
+      <div className='App'>
+        <header className='App-header'>
+          <img src={logo} className='App-logo' alt='logo' />
+          <h1 className='App-title'>AgileVentures</h1>
           <h2>Boost your team coding skills!</h2>
         </header>
 
@@ -119,8 +118,8 @@ class App extends Component {
           {this.renderModals()}
         </Grid>
       </div >
-    );
+    )
   }
 }
 
-export default App;
+export default App
