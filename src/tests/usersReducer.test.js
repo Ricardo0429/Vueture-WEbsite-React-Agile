@@ -6,7 +6,7 @@ describe("reduces users", () => {
     expect(usersReducer(undefined, {})).toEqual([]);
   });
 
-  it("reduces projects", () => {
+  it("reduces users", () => {
     expect(
       usersReducer([], {
         type: GET_USERS,
