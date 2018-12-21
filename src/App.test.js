@@ -3,7 +3,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import App from './App'
 import AVNavbar from './components/AVNavbar'
-import Button from 'react-bootstrap'
+// import Button from 'react-bootstrap'
 
 it('renders without crashing', () => {
   shallow(<App />)
