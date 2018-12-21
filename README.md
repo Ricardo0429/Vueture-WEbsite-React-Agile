@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/AgileVentures/agile-ventures-website-react-front-end/badge.svg?branch=develop)](https://coveralls.io/github/AgileVentures/agile-ventures-website-react-front-end?branch=develop)
+
 AgileVentures Website React Front End
 =====================================
 
