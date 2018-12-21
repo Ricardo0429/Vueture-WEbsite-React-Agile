@@ -1,3 +1,7 @@
-.user-card-header .card-footer {
+.card-footer {
+  color: #ee7335 !important;
+}
+
+.card-header {
   color: #ee7335 !important;
 }

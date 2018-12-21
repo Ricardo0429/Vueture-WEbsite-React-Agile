@@ -9,17 +9,17 @@ const User = ({ item: user }) => {
   return (
     <Card className="user-card" raised={true}>
       <Card.Content>
-        <Link to={`/users/${user.id}`} className="user-title">
-          <Image src={`${user.gravatar_url}`} floated="left" avatar={true} />
-          <big>
-            <Card.Header className="user-card-header">
+        <Link to={`/users/${user.id}`}>
+          <Image src={`${user.gravatar_url}`} floated="left" rounded={true} />
+          <big className="card-header">
+            <Card.Header>
               {user.first_name
                 ? user.first_name + " " + user.last_name
-                : user.slug}
+                : user.slug.substring(0, 15)}
             </Card.Header>
           </big>
         </Link>
-        <p>{user.title_list.length ? user.title_list.map(title => title) : null}</p>
+        <p>{user.title_list.length ? user.title_list.map(title => title + " ") : null}</p>
         <p className="card-footer">
           <FontAwesomeIcon icon={faFire} size="lg" /> {}
           {user.karma_total}

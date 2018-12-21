@@ -13,26 +13,35 @@ describe("User", () => {
   beforeEach(() => {
     wrapper = mount(
       <StaticRouter context={context}>
-        <User user={user} />
+        <User item={user} />
       </StaticRouter>
     );
   });
 
   it("should have an Image with an image url", () => {
-    expect(wrapper.find("Image").prop("src")).toEqual(user.image_url);
-  });
-
-  it("should use the default image if there is no image url", () => {
-    const user = usersFixture[2];
-    const wrapper = mount(
-      <StaticRouter context={context}>
-        <User user={user} />
-      </StaticRouter>
-    );
-    expect(wrapper.find("Image").prop("src")).toEqual("fullLogo");
+    expect(wrapper.find("Image").prop("src")).toEqual(`${user.gravatar_url}`);
   });
 
   it("should have a CardHeader with the user's name", () => {
-    expect(wrapper.find("CardHeader").text()).toEqual(user.first_name + user.last_name);
+    expect(wrapper.find("CardHeader").text()).toEqual(
+      user.first_name + " " + user.last_name
+    );
+  });
+
+  it("should display a user's title if it exists", () => {
+    let userWithTitle = wrapper.find("p").filterWhere(item => {
+      return item.text() === "Mentor";
+    });
+    expect(userWithTitle).toExist;
+  });
+
+  it("should display a user's slug if they don't have a name registered", () => {
+    let user = usersFixture[1];
+    wrapper = mount(
+      <StaticRouter context={context}>
+        <User item={user} />
+      </StaticRouter>
+    );
+    expect(wrapper.find("CardHeader").text()).toEqual(user.slug);
   });
 });

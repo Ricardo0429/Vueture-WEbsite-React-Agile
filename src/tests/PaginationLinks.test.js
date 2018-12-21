@@ -12,8 +12,8 @@ describe("PaginationLinks", () => {
     />
   );
 
-  it("should have links for each page", () => {
-    expect(wrapper.find("span")).toHaveLength(2);
+  it("should have links each page, next, and previous", () => {
+    expect(wrapper.find("span")).toHaveLength(4);
   });
       
   it("should be active when on selected page", () => {

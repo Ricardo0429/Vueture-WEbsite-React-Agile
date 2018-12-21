@@ -2,7 +2,7 @@ import React from "react";
 import { mount } from "enzyme";
 import { UsersList } from "../containers/UsersList";
 import usersFixture from "../fixtures/users";
-import { StaticRouter } from "react-router";
+import { StaticRouter } from "react-router"
 
 describe("UsersList", () => {
   let wrapper;
@@ -39,8 +39,17 @@ describe("UsersList", () => {
     let paginationLink2 = wrapper.find("span").filterWhere(item => {
       return item.text() === "2";
     });
-    console.log(wrapper.instance())
     paginationLink2.simulate("click");
-    expect(wrapper.state().selectedPage).toEqual(2)
+    let usersList = wrapper.find("UsersList")
+    expect(usersList.instance().state.selectedPage).toEqual(2);
+  });
+
+  it("shouldn't render a Project component without users", () => {
+    const wrapper = mount(
+      <StaticRouter context={context}>
+        <UsersList users={[]} fetchUsers={() => {}} />
+      </StaticRouter>
+    );
+    expect(wrapper.find("User")).toHaveLength(0);
   });
 });

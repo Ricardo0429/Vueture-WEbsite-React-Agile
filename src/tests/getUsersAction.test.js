@@ -3,13 +3,13 @@ import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 import { fetchUsers } from "../actions/getUsersAction";
 import { GET_USERS } from "../types";
-import usersResponse from "../fixtures/users";
+import usersResponse, { gravatarUrl, karmaTotal } from "../fixtures/users";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 let store;
 
-describe("fetchProjects action", () => {
+describe("fetchUsers action", () => {
   beforeEach(() => {
     moxios.install();
     store = mockStore({});
@@ -25,7 +25,7 @@ describe("fetchProjects action", () => {
       "https://develop.websiteone.agileventures.org/api/v1/users",
       {
         status: 200,
-        response: usersResponse
+        response: { users: usersResponse, gravatar_url: gravatarUrl, karma_total: karmaTotal }
       }
     );
 
