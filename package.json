@@ -19,11 +19,18 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/registerServiceWorker.js",
+    "test": "standard && react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/registerServiceWorker.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
     "standard": "^12.0.1"
+  },
+  "standard": {
+    "env": [
+      "jest",
+      "es6",
+      "browser"
+    ]
   }
 }
