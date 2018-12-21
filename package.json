@@ -22,5 +22,8 @@
     "test": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/registerServiceWorker.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
   }
 }
