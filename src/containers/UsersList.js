@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
-import { Header } from "semantic-ui-react";
+import { Header, Card } from "semantic-ui-react";
 import Paginate from "../components/Paginate";
 import PaginationLinks from "../components/PaginationLinks";
 import { connect } from "react-redux";
 import { fetchUsers } from "../actions/getUsersAction";
+import User from "../components/User";
 export class UsersList extends Component {
   state = {
     firstPage: true,
@@ -12,12 +13,12 @@ export class UsersList extends Component {
   };
 
   componentDidMount() {
-    if (!this.props.users) {
-      console.log(this.props)
+    if (!this.props.users.length) {
+      console.log(this.props.users)
       this.props.fetchUsers();
     }
   }
-  
+
   componentWillReceiveProps() {
     this.setState({ pageCount: this.props.users.length / 12 });
   }
@@ -36,7 +37,9 @@ export class UsersList extends Component {
     return (
       <Fragment>
         <Header>Volunteers Directory</Header>;
-        <Paginate items={[]} />
+        <Card.Group centered itemsPerRow={3}>
+          <Paginate items={this.props.users} Component={User} />
+        </Card.Group>
         <PaginationLinks
           handlePageSelect={this.handlePageSelect}
           firstPage={firstPage}

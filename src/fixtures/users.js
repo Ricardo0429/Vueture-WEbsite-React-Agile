@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    email: "test@test.com.br",
+    email: "mattwr18@gmail.com",
     created_at: "2015-01-26T23:19:00.575Z",
     updated_at: "2016-08-22T09:23:23.947Z",
     first_name: "Matt",
