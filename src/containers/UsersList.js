@@ -18,7 +18,8 @@ export class UsersList extends Component {
   componentDidMount() {
     if (!this.props.users.length) {
       this.props.fetchUsers();
-    } else if (this.props.users.length) {
+    } else {
+      console.log(this.props.users.length)
       this.normalizeUsers(this.props.users);
     }
   }

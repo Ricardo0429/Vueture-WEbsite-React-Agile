@@ -1,25 +1,27 @@
 import React from "react";
 import { mount } from "enzyme";
-import { UsersList } from "../containers/UsersList";
+import UsersList from "../containers/UsersList";
 import usersFixture from "../fixtures/users";
-import { StaticRouter } from "react-router"
+import { StaticRouter } from "react-router";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
+import thunk from "redux-thunk";
 
 describe("UsersList", () => {
+  let middlewares = [thunk];
+  let mockStore = configureStore(middlewares);
+  let initialState = {
+    users: usersFixture
+  };
+  let store = mockStore(initialState);
   let wrapper;
-  const context = {};
+  let context = {};
 
   wrapper = mount(
     <StaticRouter context={context}>
-      <UsersList
-        users={usersFixture}
-        fetchUsers={() =>
-          new Promise(function(resolve, _) {
-            setTimeout(function() {
-              resolve("promise");
-            }, 300);
-          })
-        }
-      />
+      <Provider store={store}>
+        <UsersList />
+      </Provider>
     </StaticRouter>
   );
 
@@ -40,16 +42,22 @@ describe("UsersList", () => {
       return item.text() === "2";
     });
     paginationLink2.simulate("click");
-    let usersList = wrapper.find("UsersList")
+    let usersList = wrapper.find("UsersList");
     expect(usersList.instance().state.selectedPage).toEqual(2);
   });
-
+  
   it("shouldn't render a Project component without users", () => {
-    const wrapper = mount(
+    store = mockStore({ users: [] });
+    let wrapper = mount(
       <StaticRouter context={context}>
-        <UsersList users={[]} fetchUsers={() => {}} />
+        <Provider store={store}>
+          <UsersList />
+        </Provider>
       </StaticRouter>
     );
+    let usersList = wrapper.find("UsersList");
+    
+    usersList.instance().props({ users: ["something"] })
     expect(wrapper.find("User")).toHaveLength(0);
   });
 });
