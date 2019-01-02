@@ -1,27 +1,25 @@
 import React from "react";
-import { mount } from "enzyme";
-import UsersList from "../containers/UsersList";
+import { mount, shallow } from "enzyme";
+import { UsersList } from "../containers/UsersList";
 import usersFixture from "../fixtures/users";
 import { StaticRouter } from "react-router";
-import { Provider } from "react-redux";
-import configureStore from "redux-mock-store";
-import thunk from "redux-thunk";
 
 describe("UsersList", () => {
-  let middlewares = [thunk];
-  let mockStore = configureStore(middlewares);
-  let initialState = {
-    users: usersFixture
-  };
-  let store = mockStore(initialState);
   let wrapper;
-  let context = {};
+  const context = {};
 
   wrapper = mount(
     <StaticRouter context={context}>
-      <Provider store={store}>
-        <UsersList />
-      </Provider>
+      <UsersList
+        users={usersFixture}
+        fetchUsers={() =>
+          new Promise(function(resolve, _) {
+            setTimeout(function() {
+              resolve("promise");
+            }, 300);
+          })
+        }
+      />
     </StaticRouter>
   );
 
@@ -44,21 +42,40 @@ describe("UsersList", () => {
     paginationLink2.simulate("click");
     let usersList = wrapper.find("UsersList");
     expect(usersList.instance().state.selectedPage).toEqual(2);
+    expect(usersList.instance().state.lastPage).toBe(false);
+    expect(usersList.instance().state.firstPage).toBe(false);
+  });
+
+  it("should set lastPage to true when the selectedPage is the last", () => {
+    let paginationLink2 = wrapper.find("span").filterWhere(item => {
+      return item.text() === "3";
+    });
+    paginationLink2.simulate("click");
+    let usersList = wrapper.find("UsersList");
+    expect(usersList.instance().state.lastPage).toBe(true);
+  });
+
+  it("should set firstPage to true when the selectedPage is the first", () => {
+    let paginationLink2 = wrapper.find("span").filterWhere(item => {
+      return item.text() === "1";
+    });
+    paginationLink2.simulate("click");
+    let usersList = wrapper.find("UsersList");
+    expect(usersList.instance().state.firstPage).toBe(true);
   });
 
   it("shouldn't render a Project component without users", () => {
-    store = mockStore({ users: [] });
-    // let wrapper = shallow(<UsersList store={store} />);
-    let wrapper = mount(
+    const wrapper = mount(
       <StaticRouter context={context}>
-        <Provider store={store}>
-          <UsersList />
-        </Provider>
+        <UsersList users={[]} fetchUsers={() => {}} />
       </StaticRouter>
     );
-
-    // wrapper.setProps({ users: ["something"] })
-    console.log(wrapper.debug())
     expect(wrapper.find("User")).toHaveLength(0);
+  });
+
+  it("should test componentWillReceiveProps", () => {
+    const wrapper = shallow(<UsersList users={[]} fetchUsers={() => {}} />);
+    wrapper.setProps({ users: ["something"] });
+    expect(wrapper.instance().state.users).toEqual({ "1": ["something"] });
   });
 });
