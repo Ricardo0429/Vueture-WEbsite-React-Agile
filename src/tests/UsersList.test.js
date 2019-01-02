@@ -45,9 +45,10 @@ describe("UsersList", () => {
     let usersList = wrapper.find("UsersList");
     expect(usersList.instance().state.selectedPage).toEqual(2);
   });
-  
+
   it("shouldn't render a Project component without users", () => {
     store = mockStore({ users: [] });
+    // let wrapper = shallow(<UsersList store={store} />);
     let wrapper = mount(
       <StaticRouter context={context}>
         <Provider store={store}>
@@ -55,9 +56,9 @@ describe("UsersList", () => {
         </Provider>
       </StaticRouter>
     );
-    let usersList = wrapper.find("UsersList");
-    
-    usersList.instance().props({ users: ["something"] })
+
+    // wrapper.setProps({ users: ["something"] })
+    console.log(wrapper.debug())
     expect(wrapper.find("User")).toHaveLength(0);
   });
 });
