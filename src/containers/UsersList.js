@@ -5,6 +5,7 @@ import PaginationLinks from "../components/PaginationLinks";
 import { connect } from "react-redux";
 import { fetchUsers } from "../actions/getUsersAction";
 import User from "../components/User";
+import "../assets/UsersList.css";
 export class UsersList extends Component {
   state = {
     firstPage: true,
@@ -19,7 +20,6 @@ export class UsersList extends Component {
     if (!this.props.users.length) {
       this.props.fetchUsers();
     } else {
-      console.log(this.props.users.length)
       this.normalizeUsers(this.props.users);
     }
   }
