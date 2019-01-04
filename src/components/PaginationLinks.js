@@ -22,7 +22,7 @@ const PaginationLinks = ({
           </span>
         );
       } else if (i === 3) {
-        pageItems.push(<span>...</span>);
+        pageItems.splice(2, 1, <span>...</span>);
       } else if (i >= selectedPage - 2 && i <= selectedPage + 2) {
         pageItems.push(
           <span
@@ -33,7 +33,7 @@ const PaginationLinks = ({
             {i}
           </span>
         );
-      } else if (i === pageCount - 6) {
+      } else if (i === pageCount - 2) {
         pageItems.push(<span>...</span>);
       } else if (i >= pageCount - 1) {
         pageItems.push(
@@ -45,7 +45,7 @@ const PaginationLinks = ({
             {i}
           </span>
         );
-      }
+      } 
     }
   } else {
     for (let i = 1; i <= pageCount; i++) {
@@ -61,8 +61,9 @@ const PaginationLinks = ({
         );
       } else if (i === 13) {
         pageItems.splice(10, 1, <span>...</span>);
-        break;
-      }
+      } else if (i === pageCount) {
+        pageItems.splice(11, 1, <span>{pageCount}</span>)
+      }      
     }
   }
 
