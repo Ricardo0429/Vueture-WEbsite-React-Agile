@@ -13,7 +13,7 @@ class AboutUs extends Component {
         </header>
  
         <AVNavbar/>
-
+        
         <p className="App-intro">
           About Us
         </p>
