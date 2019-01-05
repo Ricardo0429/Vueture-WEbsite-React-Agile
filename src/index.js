@@ -5,6 +5,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import AboutUs from "./AboutUs";
 import UsersList from "./containers/UsersList";
+import UserProfile from "./components/UserProfile";
 import registerServiceWorker from "./registerServiceWorker";
 import { Container, Grid } from "semantic-ui-react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
@@ -20,6 +21,10 @@ ReactDOM.render(
             <Grid.Column width={12}>
               <Switch>
                 <Route path="/about-us" component={AboutUs} />
+                <Route
+                  path="/users/:id"
+                  render={props => <UserProfile {...props} />}
+                />
                 <Route path="/users" component={UsersList} />
                 <Route path="/" component={App} />
               </Switch>
