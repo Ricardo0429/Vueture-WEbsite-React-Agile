@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import AboutUs from "./AboutUs";
 import UsersList from "./containers/UsersList";
-import UserProfile from "./components/UserProfile";
+import UserProfile from "./containers/UserProfile";
 import registerServiceWorker from "./registerServiceWorker";
 import { Container, Grid } from "semantic-ui-react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";

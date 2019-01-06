@@ -10,7 +10,7 @@ const User = ({ item: user }) => {
     <Card className="user-card" raised={true}>
       <Card.Content>
         <Link to={`/users/${user.id}`}>
-          <Image src={`${user.gravatar_url}`} floated="left" rounded={true} />
+          <Image src={`${user.gravatar_url}`} floated="left" rounded={true} size="tiny" />
           <big className="card-header">
             <Card.Header>
               {user.first_name

@@ -8,6 +8,7 @@ const Paginate = ({ items, Component }) => {
       <Component key={item.id} item={item} />
     ));
   }
+
   return (
     itemsArray || (
       <RingLoader
