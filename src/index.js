@@ -7,30 +7,24 @@ import AboutUs from "./AboutUs";
 import UsersList from "./containers/UsersList";
 import UserProfile from "./containers/UserProfile";
 import registerServiceWorker from "./registerServiceWorker";
-import { Container, Grid } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./index.css";
-import "semantic-ui-css/semantic.min.css";
+import "./assets/semantic.min.css";
 
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
       <Container className="main-content">
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={12}>
-              <Switch>
-                <Route path="/about-us" component={AboutUs} />
-                <Route
-                  path="/users/:id"
-                  render={props => <UserProfile {...props} />}
-                />
-                <Route path="/users" component={UsersList} />
-                <Route path="/" component={App} />
-              </Switch>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <Switch>
+          <Route
+            path="/users/:id"
+            render={props => <UserProfile {...props} />}
+          />
+          <Route path="/about-us" component={AboutUs} />
+          <Route path="/users" component={UsersList} />
+          <Route path="/" component={App} />
+        </Switch>
       </Container>
     </Provider>
   </BrowserRouter>,

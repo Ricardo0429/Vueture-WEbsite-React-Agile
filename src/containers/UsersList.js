@@ -67,8 +67,8 @@ export class UsersList extends Component {
       firstPage,
       lastPage,
       pageCount,
-      usersList,
-      selectedPage
+      selectedPage,
+      usersList
     } = this.state;
     return (
       <Fragment>

@@ -1,0 +1,49 @@
+.user-profile-card {
+  width: 250px !important;
+  margin-top: 70px !important;
+}
+
+.user-profile-image {
+  width: 250px !important;
+  height: 250px !important;
+}
+
+.user-profile-name {
+  margin-left: 30px;
+}
+
+.user-profile-karma {
+  color: #ee7335 !important;
+  margin-left: 20px !important;
+}
+
+.font-awesome-icon {
+  margin: 0px 5px 0px 30px;
+}
+
+.user-profile-tabs {
+  margin-top: 70px !important;
+}
+
+.user-profile-skills {
+  /* margin: 2px 2px 2px 10px !important; */
+}
+
+.user-profile-skills .label {
+  background-color: #f07f48 !important;
+  color: white !important;
+  font-size: 75%;
+  margin-bottom: 10px !important;
+}
+
+.user-profile-videos {
+  margin-top: 70px !important;
+}
+
+.user-profile-activity h5 {
+  font-size: 0.96rem;
+}
+
+.user-profile-activity-icon {
+  margin-left: 3px;
+}
