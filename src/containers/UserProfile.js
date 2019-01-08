@@ -12,7 +12,7 @@ export class UserProfile extends Component {
       this.props.fetchUsers();
     } else {
       const user = this.props.users.filter(
-        user => user.id == this.props.match.params.id
+        user => user.id === Number(this.props.match.params.id)
       )[0];
       this.setState({ user });
     }
@@ -21,7 +21,7 @@ export class UserProfile extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.users.length !== nextProps.users.length) {
       const user = nextProps.users.filter(
-        user => user.id == this.props.match.params.id
+        user => user.id === Number(this.props.match.params.id)
       )[0];
       this.setState({ user });
     }

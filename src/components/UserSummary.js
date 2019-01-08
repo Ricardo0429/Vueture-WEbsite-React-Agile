@@ -55,7 +55,12 @@ const UserSummary = props => {
                       <a href={`/projects/${project.slug}`}>{project.title}</a>
                     </Card.Header>
                     <Card.Description>
-                      {project.description.substring(0, 150) + "..."}
+                      <FontAwesomeIcon
+                        icon={faGithubAlt}
+                        size="lg"
+                        className="github-commit-count-icon"
+                      /> 
+                      {project.commit_count} total commits
                     </Card.Description>
                   </Card.Content>
                 </Card>
@@ -91,8 +96,8 @@ const UserSummary = props => {
               })}
             </ul>
             <h5>
-              Contributions (Hangouts Attended) - {user.hangouts} total hangouts
-              x 1 - {user.hangouts}{" "}
+              Contributions (Hangouts Hosted) - {user.hangouts} total hangouts x
+              1 - {user.hangouts}{" "}
               <FontAwesomeIcon
                 icon={faFire}
                 className="user-profile-activity-icon"
@@ -100,7 +105,7 @@ const UserSummary = props => {
             </h5>
             <h5>
               Contributions (Authentications) - {user.authentications}{" "}
-              authentications x 100 - {parseInt(user.authentications) * 100}
+              authentications x 100 - {Number(user.authentications) * 100}
               <FontAwesomeIcon
                 icon={faFire}
                 className="user-profile-activity-icon"

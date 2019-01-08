@@ -44,6 +44,7 @@
   font-size: 0.96rem;
 }
 
-.user-profile-activity-icon {
-  margin-left: 3px;
+.user-profile-activity-icon, .github-commit-count-icon {
+  margin: 0px 3px;
 }
+
