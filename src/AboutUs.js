@@ -13,10 +13,13 @@ class AboutUs extends Component {
         </header>
  
         <AVNavbar/>
-
+        <AVNavbar/>
         <p className="App-intro">
           About Us
         </p>
+        <p className="App-intro">
+          Contact Us
+        </p>    
       </div>)
     }
 }
